@@ -268,20 +268,273 @@
   }
 
   /**
-   * Trust Strip Marquee (Section 9)
+   * Section 2A: Intro & Stats (#who-we-are)
    */
-  function initTrustMarquee() {
-    var track = document.querySelector(".js-trust-track");
-    if (!track) return;
+  function initIntroStats() {
+    var section = document.querySelector("#who-we-are");
+    if (!section) return;
 
-    track.innerHTML += track.innerHTML;
+    var isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    gsap.to(track, {
-      xPercent: -50,
-      repeat: -1,
-      duration: 25,
-      ease: "none"
-    });
+    // Fast-path for reduced motion
+    if (isReducedMotion) {
+      var counters = section.querySelectorAll("[data-counter]");
+      counters.forEach(function (el) {
+        var targetVal = parseInt(el.getAttribute("data-counter"), 10) || 0;
+        var suffix = el.getAttribute("data-suffix") || "";
+        var decimals = parseInt(el.getAttribute("data-decimals"), 10) || 0;
+        var formatted = new Intl.NumberFormat("en-IN", { maximumFractionDigits: decimals }).format(targetVal);
+        el.textContent = formatted + suffix;
+      });
+      return;
+    }
+
+    var ctx = gsap.context(function () {
+      // 1. Eyebrow animation
+      var eyebrow = section.querySelector('[data-anim="eyebrow"]');
+      if (eyebrow) {
+        var icon = eyebrow.querySelector("i");
+        var textNodes = Array.from(eyebrow.childNodes).filter(function (n) {
+          return n !== icon;
+        });
+
+        var eyebrowTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: eyebrow,
+            start: "top 88%",
+            once: true
+          }
+        });
+
+        if (icon) {
+          eyebrowTl.fromTo(icon,
+            { scale: 0, rotate: -90 },
+            { scale: 1, rotate: 0, duration: 0.6, ease: "back.out(2)" }
+          );
+        }
+
+        if (textNodes.length) {
+          eyebrowTl.fromTo(textNodes,
+            { x: -14, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+            "-=0.5"
+          );
+        }
+      }
+
+      // 2. Tagline Bar and Text
+      var tagline = section.querySelector('[data-anim="tagline"]');
+      if (tagline) {
+        var bar = tagline.querySelector(".intro__tagline-bar");
+        var text = tagline.querySelector(".intro__tagline-text");
+
+        var taglineTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: tagline,
+            start: "top 88%",
+            once: true
+          }
+        });
+
+        if (bar) {
+          taglineTl.fromTo(bar,
+            { scaleY: 0 },
+            { scaleY: 1, duration: 0.7, ease: "power3.inOut" }
+          );
+        }
+
+        if (text) {
+          taglineTl.fromTo(text,
+            { x: -20, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+            "-=0.5"
+          );
+        }
+      }
+
+      // 3. Pills Checklist Stagger
+      var pillsContainer = section.querySelector('.intro__pills');
+      if (pillsContainer) {
+        var pills = pillsContainer.querySelectorAll(".intro__pill");
+        pills.forEach(function (pill, idx) {
+          var checkIcon = pill.querySelector(".intro__pill-icon");
+
+          gsap.fromTo(pill,
+            { y: 24, opacity: 0, scale: 0.96 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.7,
+              ease: "power3.out",
+              delay: idx * 0.1,
+              scrollTrigger: {
+                trigger: pillsContainer,
+                start: "top 85%",
+                once: true
+              }
+            }
+          );
+
+          if (checkIcon) {
+            gsap.fromTo(checkIcon,
+              { scale: 0 },
+              {
+                scale: 1,
+                duration: 0.5,
+                ease: "back.out(3)",
+                delay: idx * 0.1 + 0.15,
+                scrollTrigger: {
+                  trigger: pillsContainer,
+                  start: "top 85%",
+                  once: true
+                }
+              }
+            );
+          }
+        });
+      }
+
+      // 4. Photo Curtain Reveal & Parallax
+      var photo = section.querySelector('[data-anim="curtain"]');
+      if (photo) {
+        var photoImg = photo.querySelector("img");
+
+        var photoTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: photo,
+            start: "top 80%",
+            once: true
+          }
+        });
+
+        photoTl.fromTo(photo,
+          { clipPath: "inset(0 0 100% 0 round 28px)" },
+          { clipPath: "inset(0 0 0% 0 round 28px)", duration: 1.3, ease: "power4.inOut" }
+        );
+
+        if (photoImg) {
+          photoTl.fromTo(photoImg,
+            { scale: 1.3 },
+            { scale: 1, duration: 1.6, ease: "power3.out" },
+            0
+          );
+
+          if (window.matchMedia("(min-width: 992px)").matches) {
+            gsap.fromTo(photoImg,
+              { yPercent: -7 },
+              {
+                yPercent: 7,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: photo,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: true
+                }
+              }
+            );
+          }
+        }
+      }
+
+      // 5. Hairline Rule Expansion & Stat Item Counters
+      var rule = section.querySelector(".intro__rule");
+      if (rule) {
+        gsap.fromTo(rule,
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            duration: 1.2,
+            ease: "power3.inOut",
+            delay: 0.5,
+            scrollTrigger: {
+              trigger: photo || rule,
+              start: "top 80%",
+              once: true
+            }
+          }
+        );
+      }
+
+      var statItems = section.querySelectorAll(".intro-stat");
+      statItems.forEach(function (stat, idx) {
+        gsap.fromTo(stat,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            delay: 0.6 + idx * 0.15,
+            scrollTrigger: {
+              trigger: photo || stat,
+              start: "top 80%",
+              once: true
+            }
+          }
+        );
+
+        var counterEl = stat.querySelector("[data-counter]");
+        if (counterEl) {
+          var targetVal = parseInt(counterEl.getAttribute("data-counter"), 10) || 0;
+          var suffix = counterEl.getAttribute("data-suffix") || "";
+          var decimals = parseInt(counterEl.getAttribute("data-decimals"), 10) || 0;
+          var counterObj = { v: 0 };
+
+          gsap.to(counterObj, {
+            v: targetVal,
+            duration: 1.8,
+            ease: "power2.out",
+            delay: 0.7 + idx * 0.15,
+            scrollTrigger: {
+              trigger: photo || stat,
+              start: "top 80%",
+              once: true
+            },
+            onUpdate: function () {
+              var formatted = new Intl.NumberFormat("en-IN", { maximumFractionDigits: decimals }).format(counterObj.v);
+              counterEl.textContent = formatted + suffix;
+            },
+            onComplete: function () {
+              var formatted = new Intl.NumberFormat("en-IN", { maximumFractionDigits: decimals }).format(targetVal);
+              counterEl.textContent = formatted + suffix;
+            }
+          });
+        }
+      });
+
+      // 6. Mission & Vision Cards Hover Tracker
+      var cards = section.querySelectorAll(".intro-card");
+      cards.forEach(function (card) {
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+          card.addEventListener("mousemove", function (e) {
+            var rect = card.getBoundingClientRect();
+            var x = ((e.clientX - rect.left) / rect.width) * 100;
+            var y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty("--mx", x + "%");
+            card.style.setProperty("--my", y + "%");
+          });
+
+          card.addEventListener("mouseleave", function () {
+            card.style.setProperty("--mx", "50%");
+            card.style.setProperty("--my", "50%");
+          });
+        }
+      });
+
+      // 7. Background pattern infinite rotation
+      var pattern = section.querySelector(".intro__pattern");
+      if (pattern && window.matchMedia("(min-width: 992px)").matches) {
+        gsap.to(pattern, {
+          rotate: 360,
+          duration: 120,
+          repeat: -1,
+          ease: "none"
+        });
+      }
+
+    }, section);
   }
 
   // Initialize on DOMContentLoaded
@@ -296,6 +549,7 @@
       initLenis();
       initHeroAnimation();
       initRibbons();
+      initIntroStats();
       initPartners();
       initTrustMarquee();
       initDeclarativeReveals();

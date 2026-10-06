@@ -4,6 +4,30 @@ The section introduces the company in one calm, confident spread: a big two-line
 
 ---
 
+## STRICT ISOLATION RULES (highest priority - read before anything else)
+
+This section is a **purely additive, self-contained insert**. Adding it **must not change, shift, restyle, re-time or break any existing part of the website** (header, hero, ribbons, value props, services, about, grid, team, pricing, experience, partners, news, FAQ, footer, smooth scroll, pins, anchors). If any rule below conflicts with another instruction, **these rules win**.
+
+1. **Additive edits only.** The only permitted changes to existing files are:
+   - `index.html`: insert **one** `<section id="who-we-are">` block at the exact position in Section 8, wrapped in the markers `<!-- INTRO & STATS: START -->` and `<!-- INTRO & STATS: END -->`.
+   - `style.css`: append the new `/* 7A. INTRO & STATS */` block (wrapped in `/* 7A START */` / `/* 7A END */`), add the two new tokens at the **end** of `:root`, and add new lines (each tagged with a `/* 7A */` comment) **inside** the existing responsive, reduced-motion and `.js` initial-state blocks.
+   - `animations.js`: add one function `initIntroStats()` (wrapped in `// INTRO & STATS START` / `// INTRO & STATS END`) and **one** call line inside the existing `matchMedia` handler.
+   - No other line may be edited, reformatted, reordered, renamed or deleted. **Do not run a formatter or "clean up" existing code.** Do not rewrite whole files; use targeted insertions.
+2. **CSS is fully scoped.** Every new selector must start with `#who-we-are`, `.intro`, `.intro-stat` or `.intro-card`. **Forbidden:** bare element selectors (`h2`, `p`, `ul`, `img`, `figure`), the universal selector `*`, `html`/`body` rules, new `:root` values other than the two named tokens, `!important`, and any edit to Bootstrap or to existing classes (`.container`, `.row`, `.col-*`, `.eyebrow`, `.btn-pill`, `.glow`, `.dot-card`, `.visually-hidden`, `.site-header`, `.skip-link`). Shared components are **reused as-is**. If a variation is needed, create a new modifier class inside the 7A block.
+3. **No layout side effects.** Do not change the height, margin, padding or z-index of the hero or the ribbon band; the ribbon overlap stays exactly as built. The extra top spacing is handled **only** by this section's own padding. No negative margins on the new section. The section is a direct sibling between the ribbon band and Value Props inside `#smooth-content`; do not wrap, move or re-parent any existing element. `position: relative; isolation: isolate; z-index: 0` on the section so nothing inside can overlap the header (z-index 1000) or the ribbons (z-index 3); no z-index above 5 inside it.
+4. **JS is fully scoped.** Everything runs inside one `gsap.context(() => {...}, "#who-we-are")`. **Forbidden:** `ScrollTrigger.killAll()`, `gsap.set("*")`, `gsap.defaults()`, `ScrollTrigger.defaults()`, extra global `ScrollTrigger.refresh()` calls, document-wide selectors, and `window`/`document` listeners that are not removed in the context's cleanup. Only query elements via `context.selector` / `gsap.utils.selector("#who-we-are")`.
+5. **Unique hooks so existing handlers never touch this section.** The master prompt's global initialisers (`initTextReveals`, `initFadeUps`, `initCounters`, etc.) select `data-anim` and `data-counter`. This section **must not use those attributes**. All its hooks use the `data-intro-*` prefix (`data-intro-anim`, `data-intro-item`, `data-intro-counter`, `data-intro-suffix`, `data-intro-decimals`) and are handled **only** by `initIntroStats()`. This prevents double animation. `data-speed` is allowed because it is ScrollSmoother's own attribute and only affects the element it sits on.
+6. **ScrollTrigger order and pins.** Create this section's triggers in DOM order, **before** the Pricing and Experience pin triggers (call `initIntroStats()` right after `initRibbons()`, as in Section 8), and rely on the single existing refresh after `load` / `document.fonts.ready`. After insertion, the Pricing left-column pin and the Experience stack pin must still start and end exactly at their own sections. Do not add `pinSpacing` or `ScrollTrigger.sort()` changes elsewhere.
+7. **Unique names.** No duplicate `id`. No reuse of an existing class name for a new meaning. The section id is `#who-we-are` (never `#intro`).
+8. **Fail-safe.** `initIntroStats()` is wrapped in `try/catch` (silent, no console output). On any error it adds the class `intro--static` to the section, which (in the 7A CSS block) forces every child to its final visible state. A failure here must never stop the other initialisers from running.
+9. **Fully reversible.** Deleting the three marked chunks (HTML block, CSS block + tagged lines, JS function + call) must return the site to its exact previous state with **zero** leftover side effects.
+10. **Regression gate (required before delivery).**
+    - Capture full-page screenshots **before** and **after** at 1920, 1440, 768 and 390 widths. Every existing section must look identical; the only allowed difference is a uniform vertical offset equal to this section's height.
+    - Re-test: hero load timeline, ribbon marquees, header hide/show and scrolled state, ScrollSmoother, anchor links (including `#about`, `#services`, `#plans`, `#faq`), scrollspy, Pricing pin, Experience stack pin, slider, accordion, offcanvas and search modal.
+    - No new console errors or warnings; no new horizontal scroll; CLS not worse than before; the three file diffs are additions only.
+
+---
+
 ## 0. NON-NEGOTIABLE CODE RULES (inherited from the master prompt)
 
 These rules **must** be followed. They are identical to the master prompt and apply fully here.
@@ -47,32 +71,32 @@ If `intro-1.jpg` is not yet in the folder, temporarily use `assets/img/about-2.j
   <div class="container intro__inner">
 
     <header class="intro__head">
-      <span class="eyebrow" data-anim="eyebrow"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Who we are</span>
-      <h2 id="intro-title" class="intro__title" data-anim="title">Engineering experience. Construction discipline.</h2>
+      <span class="eyebrow" data-intro-anim="eyebrow"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Who we are</span>
+      <h2 id="intro-title" class="intro__title" data-intro-anim="title">Engineering experience. Construction discipline.</h2>
     </header>
 
     <div class="row intro__grid">
 
       <div class="col-lg-5 intro__text">
-        <p class="intro__tagline" data-anim="tagline"><span class="intro__tagline-bar" aria-hidden="true"></span><span class="intro__tagline-text">Dependable engineering, delivered on site.</span></p>
-        <p class="intro__para" data-anim="fade-up">...</p>
-        <p class="intro__para" data-anim="fade-up">...</p>
-        <ul class="intro__pills" data-anim="stagger">
-          <li class="intro__pill" data-anim-item><i class="fa-solid fa-check" aria-hidden="true"></i><span>...</span></li>
+        <p class="intro__tagline" data-intro-anim="tagline"><span class="intro__tagline-bar" aria-hidden="true"></span><span class="intro__tagline-text">Dependable engineering, delivered on site.</span></p>
+        <p class="intro__para" data-intro-anim="fade-up">...</p>
+        <p class="intro__para" data-intro-anim="fade-up">...</p>
+        <ul class="intro__pills" data-intro-anim="stagger">
+          <li class="intro__pill" data-intro-item><i class="fa-solid fa-check" aria-hidden="true"></i><span>...</span></li>
           <!-- 4 items -->
         </ul>
-        <a class="btn-pill btn-pill--brand" href="#about" data-anim="fade-up">...</a>
+        <a class="btn-pill btn-pill--brand" href="#about" data-intro-anim="fade-up">...</a>
       </div>
 
       <div class="col-lg-7 intro__visual">
         <div class="intro__top">
-          <figure class="intro__photo" data-anim="curtain"><img ...></figure>
+          <figure class="intro__photo" data-intro-anim="curtain"><img ...></figure>
           <div class="intro__stats">
-            <h3 class="intro__stats-title" data-anim="title">A decade of experience in engineering and construction.</h3>
+            <h3 class="intro__stats-title" data-intro-anim="title">A decade of experience in engineering and construction.</h3>
             <span class="intro__rule" aria-hidden="true"></span>
-            <ul class="intro-stats" data-anim="stats">
-              <li class="intro-stat" data-anim-item>
-                <p class="intro-stat__value"><span aria-hidden="true" data-counter="10" data-suffix="+">0+</span><span class="visually-hidden">10+</span></p>
+            <ul class="intro-stats" data-intro-anim="stats">
+              <li class="intro-stat" data-intro-item>
+                <p class="intro-stat__value"><span aria-hidden="true" data-intro-counter="10" data-intro-suffix="+">0+</span><span class="visually-hidden">10+</span></p>
                 <p class="intro-stat__label">Years of experience</p>
               </li>
               <!-- 3 items -->
@@ -80,8 +104,8 @@ If `intro-1.jpg` is not yet in the folder, temporarily use `assets/img/about-2.j
           </div>
         </div>
         <div class="intro__cards">
-          <article class="intro-card intro-card--dark" data-anim-item> ... </article>
-          <article class="intro-card intro-card--brand" data-anim-item> ... </article>
+          <article class="intro-card intro-card--dark" data-intro-item> ... </article>
+          <article class="intro-card intro-card--brand" data-intro-item> ... </article>
         </div>
       </div>
 
@@ -126,7 +150,7 @@ Two stacked rows with a `row-gap` of `clamp(1.25rem, 2.2vw, 1.75rem)`.
   - **Stats list `.intro-stats`**: 3 columns (`display:grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 24px`; below 480px: 1 column, each stat in a row with value left and label right).
   - Each **stat**: value `.intro-stat__value` Outfit 400, `clamp(2.5rem, 4.2vw, 3.75rem)`, `line-height: 1`, `letter-spacing: -0.04em`, `--color-ink`, `font-variant-numeric: tabular-nums` (so counting never makes the layout jitter); label `.intro-stat__label` Jost 400, 16px/1.4, `--color-text`, max 2 lines, `margin-top: 12px`.
   - Stats (all placeholders, confirm with client):
-    | `data-counter` | `data-suffix` | Label |
+    | `data-intro-counter` | `data-intro-suffix` | Label |
     |---|---|---|
     | 10 | + | Years of experience |
     | 250 | + | Projects delivered |
@@ -166,23 +190,23 @@ All motion uses the master timing language: micro 0.2-0.3s, UI 0.5s, reveal 0.9-
 
 | Element | Trigger | From -> To | Duration / ease | Stagger / delay |
 |---|---|---|---|---|
-| **Eyebrow** (`[data-anim="eyebrow"]`) | `top 88%` | bolt icon `scale 0, rotate -90 -> 1, 0`; text `x -14, opacity 0 -> 0, 1` | icon 0.6s `back.out(2)`, text 0.6s `power3.out` | text delay 0.1s |
+| **Eyebrow** (`[data-intro-anim="eyebrow"]`) | `top 88%` | bolt icon `scale 0, rotate -90 -> 1, 0`; text `x -14, opacity 0 -> 0, 1` | icon 0.6s `back.out(2)`, text 0.6s `power3.out` | text delay 0.1s |
 | **H2 `.intro__title`** | `top 85%` | SplitText lines, `yPercent 110 -> 0` inside masks | 1.1s `power4.out` | 0.12s per line |
 | **Tagline** | `top 88%` | bar `scaleY 0 -> 1` (`transform-origin: top`); text `x -20, opacity 0 -> 0, 1` | bar 0.7s `power3.inOut`, text 0.8s `power3.out` | text delay 0.2s |
 | **Paragraphs** | each at `top 88%` | `y 32, opacity 0 -> 0, 1` | 0.9s `power3.out` | paragraph 2 delay 0.1s |
-| **Pills** (`[data-anim="stagger"]`) | parent at `top 85%` | `y 24, opacity 0, scale .96 -> 0, 1, 1`; check circle `scale 0 -> 1` | 0.7s `power3.out`; check 0.5s `back.out(3)` | 0.1s per pill; check delay +0.15s after its pill |
+| **Pills** (`[data-intro-anim="stagger"]`) | parent at `top 85%` | `y 24, opacity 0, scale .96 -> 0, 1, 1`; check circle `scale 0 -> 1` | 0.7s `power3.out`; check 0.5s `back.out(3)` | 0.1s per pill; check delay +0.15s after its pill |
 | **Button** | `top 92%` | `y 24, opacity 0, scale .92 -> 0, 1, 1` | 0.8s `back.out(1.4)` | none |
 | **Photo** (`curtain`) | `top 80%` | wrapper `clipPath inset(0 0 100% 0 round 28px) -> inset(0 0 0% 0 round 28px)`; inner image `scale 1.3 -> 1` | wrapper 1.3s `power4.inOut`, image 1.6s `power3.out` | none |
 | **Stats H3** | same trigger as photo, delay 0.3s | SplitText lines `yPercent 110 -> 0` | 1s `power4.out` | 0.1s per line |
 | **Rule** `.intro__rule` | after H3 | `scaleX 0 -> 1` (`transform-origin: left`) | 1.2s `power3.inOut` | delay 0.5s |
 | **Stat items** | after the rule starts | `y 40, opacity 0 -> 0, 1` | 0.9s `power3.out` | 0.15s per stat |
-| **Counters** | with their stat item | number counts `0 -> data-counter` | 1.8s `power2.out`, `snap: { value: 1 }` | starts 0.1s after its stat appears |
+| **Counters** | with their stat item | number counts `0 -> data-intro-counter` | 1.8s `power2.out`, `snap: { value: 1 }` | starts 0.1s after its stat appears |
 | **Mission / Vision cards** | `top 82%` | `y 80, opacity 0, clipPath inset(10% 0 0 0 round 28px) -> y 0, opacity 1, inset(0 round 28px)` | 1.1s `power3.out` | 0.18s per card (dark first) |
 | **Card numbers "01"/"02"** | with their card, delay 0.35s | SplitText `type: "chars"` masked, `yPercent 105 -> 0` | 0.8s `power4.out` | 0.06s per char |
 | **Card title and body** | with their card, delay 0.5s | `y 24, opacity 0 -> 0, 1` | 0.8s `power3.out` | title then body +0.1s |
 
-### 4.3 Counter behaviour (`data-counter`)
-- Read `data-counter` (target number), optional `data-suffix` (default none) and `data-decimals` (default 0).
+### 4.3 Counter behaviour (`data-intro-counter`)
+- Read `data-intro-counter` (target number), optional `data-intro-suffix` (default none) and `data-intro-decimals` (default 0).
 - Tween a plain object `{ v: 0 }` to the target and write `Intl.NumberFormat("en-IN", { maximumFractionDigits: decimals }).format(v) + suffix` into the `aria-hidden` span on every update. The adjacent `.visually-hidden` span already holds the final value for screen readers, so assistive tech never hears the counting.
 - Always end exactly on the target (`onComplete` writes the final string).
 - If the user has scrolled **past** the section before it triggers (e.g. anchor jump), set final values immediately with no tween.
@@ -202,7 +226,7 @@ All motion uses the master timing language: micro 0.2-0.3s, UI 0.5s, reveal 0.9-
 - **`(min-width: 992px)` and motion allowed:** everything above, including parallax, pointer highlight and data-speed.
 - **`(max-width: 991px)`:** reveals only. Reduce distances (paragraph/stat `y: 24`, card `y: 48`), keep durations, drop parallax, pattern rotation and pointer highlight. Counters still count.
 - **`(prefers-reduced-motion: reduce)`:** no splitting, no parallax, no rotation, no pointer effects. Every element is shown immediately in its final state (`opacity: 1`, no transform); counters show their final values instantly; only a 0.2s opacity fade is allowed.
-- **GSAP failure / no-JS:** nothing in this section may rely on animation to become visible. Initial hidden states exist only under `.js [data-anim] {...}` in `style.css` and are reset by `.anim-failed` (master Section 16).
+- **GSAP failure / no-JS:** nothing in this section may rely on animation to become visible. Initial hidden states exist only under `.js [data-intro-anim] {...}` in `style.css` and are reset by `.anim-failed` (master Section 16).
 
 ### 4.7 Performance
 - `will-change: transform` only on the rotating pattern and the parallax image; remove it in `onComplete` for all reveal tweens.
@@ -251,6 +275,7 @@ Long-content handling: stat labels clamp to 2 lines; card body text grows freely
 - Making the pills or cards look clickable, or animating `width`/`height`/`top`/`left`.
 - Heavy number-roll "slot machine" effects or counters that run longer than 2 seconds.
 - Reusing the id `#intro`.
+- Editing, reformatting, reordering or "improving" any existing HTML, CSS or JS; touching hero/ribbon spacing; global or unscoped selectors; `!important`; using `data-anim` / `data-counter` in this section; global ScrollTrigger or GSAP side effects (see STRICT ISOLATION RULES).
 
 ---
 
@@ -267,6 +292,12 @@ Long-content handling: stat labels clamp to 2 lines; card body text grows freely
 
 ## 9. QA CHECKLIST
 
+- [ ] **Isolation:** diffs of `index.html`, `style.css` and `animations.js` are additions only (no changed or deleted existing lines), and every addition sits between its START/END markers or carries a `/* 7A */` tag.
+- [ ] **Isolation:** every new CSS selector starts with `#who-we-are`, `.intro`, `.intro-stat` or `.intro-card`; no `!important`, no bare element or `*` selectors.
+- [ ] **Isolation:** this section uses only `data-intro-*` hooks; no element in it carries `data-anim` or `data-counter`.
+- [ ] **Isolation:** before/after screenshots at 1920, 1440, 768 and 390 show all other sections unchanged (offset only); Pricing pin and Experience stack pin start and end correctly.
+- [ ] **Isolation:** forcing an error inside `initIntroStats()` leaves the rest of the page animating normally and the new section visible (`intro--static`).
+- [ ] **Isolation:** deleting the three marked chunks restores the previous site exactly.
 - [ ] `grep -r 'style="' index.html` still returns nothing; no new `<style>` or inline `<script>`.
 - [ ] New CSS lives only in `style.css` under `/* 7A. INTRO & STATS */`; new JS lives only in `animations.js`.
 - [ ] Section sits directly after the ribbon band and before Value Props; ids are unique.
