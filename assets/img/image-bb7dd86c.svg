@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" height="120" width="130">
+  <path d="M0 0h130v120H0z" fill="url(#a)"/>
+  <defs>
+    <pattern height="1" id="a" patternContentUnits="objectBoundingBox" width="1">
+      <use href="#b" transform="scale(.0077 .00833)"/>
+    </pattern>
+    <image height="120" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAB4AQMAAAAExLjBAAAABlBMVEVHcEz///+flKJDAAAAAXRSTlMAQObYZgAAADpJREFUeJxj+A8FDQwwMCryfzQ0RlMCFDSM5gsGbGUCDNRDZQ6MijCMhgYIjKYEEKgHh8VoaDCghgYAIf/pbqs62HkAAAAASUVORK5CYII" id="b" preserveAspectRatio="none" width="130"/>
+  </defs>
+</svg>
