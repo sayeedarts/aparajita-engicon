@@ -202,6 +202,50 @@
     }
   }
 
+  /* 1A START */
+  /**
+   * Hero Video GSAP Parallax and Motion Match
+   */
+  function initHeroVideoMotion() {
+    try {
+      var video = document.querySelector(".js-hero-video");
+      if (!video) return;
+
+      gsap.set(video, { scale: 1.05, transformOrigin: "50% 50%" });
+
+      if (typeof ScrollTrigger !== "undefined") {
+        var mm = gsap.matchMedia();
+        mm.add("(min-width: 992px)", function () {
+          gsap.to(video, {
+            yPercent: 18,
+            ease: "none",
+            scrollTrigger: {
+              trigger: "#home",
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+              onLeave: function () {
+                if (video && !video.paused && !video._userPaused) {
+                  video.pause();
+                  video._scrollPaused = true;
+                }
+              },
+              onEnterBack: function () {
+                if (video && video._scrollPaused && !video._userPaused) {
+                  video.play().catch(function () {});
+                  video._scrollPaused = false;
+                }
+              }
+            }
+          });
+        });
+      }
+    } catch (err) {
+      console.warn("Hero video motion safe fallback:", err);
+    }
+  }
+  /* 1A END */
+
   /**
    * Ribbon Marquee Animation (Section 2)
    */
@@ -565,6 +609,7 @@
     mm.add("(prefers-reduced-motion: no-preference)", function () {
       initLenis();
       initHeroAnimation();
+      initHeroVideoMotion();
       initRibbons();
       initIntroStats();
       initPartners();

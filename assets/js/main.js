@@ -190,13 +190,223 @@
   /**
    * Dynamic Footer Copyright Year
    */
-  function initYear() {
-    var yearEls = document.querySelectorAll("[data-year]");
-    var currentYear = new Date().getFullYear();
-    yearEls.forEach(function (el) {
-      el.textContent = currentYear;
-    });
+  /* 1A START */
+  /**
+   * 1A. HERO VIDEO CONTROLLER
+   */
+  function initHeroVideo() {
+    try {
+      var video = document.querySelector(".js-hero-video");
+      var scrim = document.querySelector(".hero__scrim");
+      var toggleBtn = document.querySelector(".js-hero-video-toggle");
+
+      if (!video) return;
+
+      function removeElements() {
+        try {
+          if (video && video.parentNode) video.parentNode.removeChild(video);
+          if (scrim && scrim.parentNode) scrim.parentNode.removeChild(scrim);
+          if (toggleBtn && toggleBtn.parentNode) toggleBtn.parentNode.removeChild(toggleBtn);
+        } catch (e) {}
+      }
+
+      // Gate 1: Reduced Motion
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        removeElements();
+        return;
+      }
+
+      // Gate 2: Data Saver & Slow Connection
+      var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (conn && (conn.saveData === true || ["slow-2g", "2g", "3g"].indexOf(conn.effectiveType) !== -1)) {
+        removeElements();
+        return;
+      }
+
+      // Gate 3: Reduced Data
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-data: reduce)").matches) {
+        removeElements();
+        return;
+      }
+
+      // Gate 4: Codec Support
+      var canWebm = video.canPlayType && video.canPlayType('video/webm; codecs="vp9"');
+      var canMp4 = video.canPlayType && (video.canPlayType('video/mp4; codecs="avc1.640028"') || video.canPlayType('video/mp4'));
+      if (!canWebm && !canMp4) {
+        removeElements();
+        return;
+      }
+
+      var userPaused = false;
+      try {
+        if (sessionStorage.getItem("hero-video-paused") === "true") {
+          userPaused = true;
+          video._userPaused = true;
+        }
+      } catch (e) {}
+
+      function updateToggleUI(isPaused) {
+        if (!toggleBtn) return;
+        if (isPaused) {
+          toggleBtn.setAttribute("aria-pressed", "true");
+          toggleBtn.setAttribute("aria-label", "Play background video");
+          var icon = toggleBtn.querySelector("i");
+          if (icon) icon.className = "fa-solid fa-play";
+        } else {
+          toggleBtn.setAttribute("aria-pressed", "false");
+          toggleBtn.setAttribute("aria-label", "Pause background video");
+          var icon = toggleBtn.querySelector("i");
+          if (icon) icon.className = "fa-solid fa-pause";
+        }
+      }
+
+      function setupVideoSources() {
+        var isDesktop = window.matchMedia && window.matchMedia("(min-width: 992px)").matches;
+        var prefix = isDesktop ? "hero-1080" : "hero-720";
+
+        if (!isDesktop) {
+          var mobilePoster = video.getAttribute("data-hero-video-poster-mobile");
+          if (mobilePoster) video.setAttribute("poster", mobilePoster);
+        }
+
+        var webmSrc = "assets/videos/" + prefix + ".webm";
+        var mp4Src = "assets/videos/" + prefix + ".mp4";
+
+        while (video.firstChild) {
+          video.removeChild(video.firstChild);
+        }
+
+        if (canWebm === "probably" || canWebm === "maybe") {
+          var sWebm = document.createElement("source");
+          sWebm.src = webmSrc;
+          sWebm.type = 'video/webm; codecs="vp9"';
+          video.appendChild(sWebm);
+        }
+
+        var sMp4 = document.createElement("source");
+        sMp4.src = mp4Src;
+        sMp4.type = 'video/mp4; codecs="avc1.640028"';
+        video.appendChild(sMp4);
+
+        video.muted = true;
+        video.defaultMuted = true;
+        video.load();
+      }
+
+      function startPlayback() {
+        setupVideoSources();
+
+        video.addEventListener("error", function () {
+          removeElements();
+        });
+
+        if (userPaused) {
+          updateToggleUI(true);
+          if (toggleBtn) toggleBtn.hidden = false;
+          return;
+        }
+
+        var playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.then(function () {
+            var elapsed = performance.now();
+            var delay = Math.max(0, 2400 - elapsed);
+            setTimeout(function () {
+              if (!video._userPaused) {
+                video.classList.add("is-playing");
+                if (toggleBtn) {
+                  toggleBtn.hidden = false;
+                  updateToggleUI(false);
+                }
+                video.dispatchEvent(new CustomEvent("hero-video:playing"));
+              }
+            }, delay);
+          }).catch(function () {
+            // Autoplay blocked
+            video._userPaused = true;
+            updateToggleUI(true);
+            if (toggleBtn) toggleBtn.hidden = false;
+          });
+        }
+      }
+
+      // Schedule load after window load + idle
+      function scheduleLoad() {
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(startPlayback, { timeout: 2000 });
+        } else {
+          setTimeout(startPlayback, 1200);
+        }
+      }
+
+      if (document.readyState === "complete") {
+        scheduleLoad();
+      } else {
+        window.addEventListener("load", scheduleLoad, { once: true });
+      }
+
+      // Toggle Listener
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", function () {
+          if (video.paused || video._userPaused) {
+            video._userPaused = false;
+            try { sessionStorage.setItem("hero-video-paused", "false"); } catch (e) {}
+            video.play().then(function () {
+              video.classList.add("is-playing");
+              updateToggleUI(false);
+            }).catch(function () {});
+          } else {
+            video._userPaused = true;
+            try { sessionStorage.setItem("hero-video-paused", "true"); } catch (e) {}
+            video.pause();
+            updateToggleUI(true);
+          }
+        });
+      }
+
+      // IntersectionObserver off-screen pausing
+      if ("IntersectionObserver" in window) {
+        var heroSec = document.querySelector("#home");
+        if (heroSec) {
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.intersectionRatio < 0.15) {
+                if (!video.paused && !video._userPaused) {
+                  video.pause();
+                  video._obsPaused = true;
+                }
+              } else {
+                if (video._obsPaused && !video._userPaused) {
+                  video.play().catch(function () {});
+                  video._obsPaused = false;
+                }
+              }
+            });
+          }, { threshold: [0, 0.15] });
+          observer.observe(heroSec);
+        }
+      }
+
+      // Tab visibility change
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) {
+          if (!video.paused && !video._userPaused) {
+            video.pause();
+            video._tabPaused = true;
+          }
+        } else {
+          if (video._tabPaused && !video._userPaused) {
+            video.play().catch(function () {});
+            video._tabPaused = false;
+          }
+        }
+      });
+
+    } catch (err) {
+      console.warn("Hero video initialization safe fallback:", err);
+    }
   }
+  /* 1A END */
 
   // Initialize all UI functions on DOMContentLoaded
   document.addEventListener("DOMContentLoaded", function () {
@@ -206,6 +416,7 @@
     initNewsletter();
     initBackToTop();
     initYear();
+    initHeroVideo();
   });
 
 })();

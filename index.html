@@ -192,6 +192,18 @@
           <!-- Background Stack -->
           <img class="hero__bg" src="assets/img/hero.jpg" alt="Aparajita Engicon construction site" width="1920"
             height="1080" loading="eager" fetchpriority="high" decoding="async">
+          <!-- HERO VIDEO: START -->
+          <video class="hero__video js-hero-video" muted loop playsinline preload="none"
+            poster="assets/img/hero-poster.jpg"
+            aria-hidden="true" tabindex="-1"
+            disablepictureinpicture disableremoteplayback
+            data-hero-video-poster-mobile="assets/img/hero-poster-mobile.jpg"
+            data-hero-video-webm-lg="assets/videos/hero-1080.webm"
+            data-hero-video-mp4-lg="assets/videos/hero-1080.mp4"
+            data-hero-video-webm-sm="assets/videos/hero-720.webm"
+            data-hero-video-mp4-sm="assets/videos/hero-720.mp4"></video>
+          <div class="hero__scrim" aria-hidden="true"></div>
+          <!-- HERO VIDEO: END -->
           <div class="hero__overlay" aria-hidden="true"></div>
 
           <!-- Repeating Decorative Ghost Text -->
@@ -226,6 +238,12 @@
             <a href="#who-we-are" class="hero__scroll-cue d-none d-md-flex" aria-label="Scroll down to content">
               <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
             </a>
+
+            <!-- HERO VIDEO: START -->
+            <button class="hero__video-toggle js-hero-video-toggle" type="button" aria-pressed="false" aria-label="Pause background video" hidden>
+              <i class="fa-solid fa-pause" aria-hidden="true"></i>
+            </button>
+            <!-- HERO VIDEO: END -->
           </div>
         </section>
 
