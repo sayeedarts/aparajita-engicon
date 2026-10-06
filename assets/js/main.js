@@ -190,6 +190,14 @@
   /**
    * Dynamic Footer Copyright Year
    */
+  function initYear() {
+    var yearEls = document.querySelectorAll("[data-year]");
+    var currentYear = new Date().getFullYear();
+    yearEls.forEach(function (el) {
+      el.textContent = currentYear;
+    });
+  }
+
   /* 1A START */
   /**
    * 1A. HERO VIDEO CONTROLLER
