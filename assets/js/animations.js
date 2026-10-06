@@ -268,6 +268,23 @@
   }
 
   /**
+   * Trust Strip Marquee (Section 9)
+   */
+  function initTrustMarquee() {
+    var track = document.querySelector(".js-trust-track");
+    if (!track) return;
+
+    track.innerHTML += track.innerHTML;
+
+    gsap.to(track, {
+      xPercent: -50,
+      repeat: -1,
+      duration: 25,
+      ease: "none"
+    });
+  }
+
+  /**
    * Section 2A: Intro & Stats (#who-we-are)
    */
   function initIntroStats() {
