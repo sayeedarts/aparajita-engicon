@@ -164,18 +164,18 @@
 
     var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    var bgImg = hero.querySelector(".hero__bg");
+    //var bgImg = hero.querySelector(".hero__bg");
     var titleLines = hero.querySelectorAll(".hero__title .line");
     var text = hero.querySelector(".hero__text");
     var cta = hero.querySelector(".hero__cta");
 
-    if (bgImg) {
-      tl.fromTo(bgImg,
-        { scale: 1.2, opacity: 0 },
-        { scale: 1.05, opacity: 1, duration: 2.0, ease: "power3.out" },
-        0
-      );
-    }
+    // if (bgImg) {
+    //   tl.fromTo(bgImg,
+    //     { scale: 1.2, opacity: 0 },
+    //     { scale: 1.05, opacity: 1, duration: 2.0, ease: "power3.out" },
+    //     0
+    //   );
+    // }
 
     if (titleLines.length) {
       tl.fromTo(titleLines,
@@ -232,7 +232,7 @@
               },
               onEnterBack: function () {
                 if (video && video._scrollPaused && !video._userPaused) {
-                  video.play().catch(function () {});
+                  video.play().catch(function () { });
                   video._scrollPaused = false;
                 }
               }
@@ -598,6 +598,201 @@
     }, section);
   }
 
+  /* 22A START */
+  /**
+   * 22A. GSAP / JS HORIZONTAL MARQUEE ENGINE
+   */
+  function buildMarqueeRow(row) {
+    var track = row.querySelector("[data-marquee-track]");
+    var group = track && track.querySelector("[data-marquee-group]");
+    if (!track || !group) return null;
+
+    var dir = row.dataset.marqueeDirection === "right" ? 1 : -1; // -1 = moves left
+    var speed = parseFloat(row.dataset.marqueeSpeed) || 50;      // px per second
+    var startAt = parseFloat(row.dataset.marqueeStart) || 0;     // 0..1
+    var originals = Array.prototype.slice.call(group.children);
+    var state = { hover: 1, boost: 0, inView: true, paused: false };
+
+    var tween = null;
+    var progress = startAt;
+    var lastWidth = row.offsetWidth;
+
+    var hide = function (el) {
+      el.setAttribute("aria-hidden", "true");
+      el.setAttribute("inert", "");
+      el.setAttribute("data-marquee-clone", "");
+      return el;
+    };
+
+    var apply = function () {
+      if (!tween) return;
+      var running = state.inView && !state.paused;
+      tween.timeScale(running ? state.hover * (1 + state.boost) : 0);
+    };
+
+    var build = function () {
+      if (tween) {
+        progress = tween.progress();
+        tween.kill();
+      }
+      var clones = track.querySelectorAll("[data-marquee-clone]");
+      for (var i = 0; i < clones.length; i++) {
+        clones[i].parentNode.removeChild(clones[i]);
+      }
+
+      // 1. fill the group so it is at least as wide as the row
+      var guard = 0;
+      while (group.offsetWidth < row.offsetWidth && guard < 8) {
+        originals.forEach(function (el) {
+          group.appendChild(hide(el.cloneNode(true)));
+        });
+        guard += 1;
+      }
+
+      // 2. duplicate the whole group once: track = 2 equal groups, so -50% = one loop
+      var copy = hide(group.cloneNode(true));
+      copy.removeAttribute("data-marquee-group");
+      track.appendChild(copy);
+
+      // 3. constant speed: duration = distance / speed
+      var duration = group.offsetWidth / speed;
+      var from = dir === -1 ? 0 : -50;
+      var to = dir === -1 ? -50 : 0;
+
+      tween = gsap.fromTo(
+        track,
+        { xPercent: from },
+        { xPercent: to, duration: duration, ease: "none", repeat: -1 }
+      );
+      tween.progress(progress);
+      apply();
+    };
+
+    // eased hover / focus pause
+    var ease = function (value) {
+      gsap.to(state, { hover: value, duration: 0.5, ease: "power2.out", overwrite: "auto", onUpdate: apply });
+    };
+    var onEnter = function (e) { if (e.pointerType === "mouse") ease(0); };
+    var onLeave = function (e) { if (e.pointerType === "mouse") ease(1); };
+    var onFocusIn = function () { ease(0); };
+    var onFocusOut = function (e) { if (!row.contains(e.relatedTarget)) ease(1); };
+
+    row.addEventListener("pointerenter", onEnter);
+    row.addEventListener("pointerleave", onLeave);
+    row.addEventListener("focusin", onFocusIn);
+    row.addEventListener("focusout", onFocusOut);
+
+    // off-screen pause + scroll-velocity boost
+    var trigger = ScrollTrigger.create({
+      trigger: row,
+      start: "top bottom",
+      end: "bottom top",
+      onToggle: function (self) { state.inView = self.isActive; apply(); },
+      onUpdate: function (self) {
+        var target = gsap.utils.clamp(0, 2, Math.abs(self.getVelocity()) / 1200);
+        if (target > state.boost) { state.boost = target; apply(); }
+      }
+    });
+
+    var decay = function () {
+      if (state.boost > 0.01) {
+        state.boost *= Math.pow(0.94, gsap.ticker.deltaRatio());
+        apply();
+      } else if (state.boost !== 0) {
+        state.boost = 0;
+        apply();
+      }
+    };
+    gsap.ticker.add(decay);
+
+    // rebuild on width change
+    var raf = 0;
+    var observer = new ResizeObserver(function () {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () {
+        if (Math.abs(row.offsetWidth - lastWidth) > 1) {
+          lastWidth = row.offsetWidth;
+          build();
+        }
+      });
+    });
+    observer.observe(row);
+
+    build();
+
+    return {
+      setPaused: function (value) { state.paused = value; apply(); },
+      destroy: function () {
+        cancelAnimationFrame(raf);
+        observer.disconnect();
+        trigger.kill();
+        gsap.ticker.remove(decay);
+        gsap.killTweensOf(state);
+        if (tween) tween.kill();
+        row.removeEventListener("pointerenter", onEnter);
+        row.removeEventListener("pointerleave", onLeave);
+        row.removeEventListener("focusin", onFocusIn);
+        row.removeEventListener("focusout", onFocusOut);
+        var remainingClones = track.querySelectorAll("[data-marquee-clone]");
+        for (var k = 0; k < remainingClones.length; k++) {
+          remainingClones[k].parentNode.removeChild(remainingClones[k]);
+        }
+        gsap.set(track, { clearProps: "transform" });
+      }
+    };
+  }
+
+  function initMarquees() {
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    var rows = gsap.utils.toArray("[data-marquee-row]");
+    if (!rows.length) return;
+
+    var mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", function () {
+      var instances = [];
+      var observer = null;
+      try {
+        instances = rows.map(function (row) { return buildMarqueeRow(row); }).filter(Boolean);
+
+        var toggle = document.querySelector("[data-motion-toggle]");
+        if (toggle) {
+          var sync = function () {
+            var paused = toggle.getAttribute("aria-pressed") === "true";
+            instances.forEach(function (i) { i.setPaused(paused); });
+          };
+          observer = new MutationObserver(sync);
+          observer.observe(toggle, { attributes: true, attributeFilter: ["aria-pressed"] });
+          sync();
+
+          toggle.addEventListener("click", function () {
+            var currentState = toggle.getAttribute("aria-pressed") === "true";
+            var nextState = !currentState;
+            toggle.setAttribute("aria-pressed", nextState ? "true" : "false");
+            toggle.textContent = nextState ? "Resume animations" : "Pause animations";
+          });
+        }
+      } catch (error) {
+        instances.forEach(function (i) { i.destroy(); });
+        instances = [];
+        rows.forEach(function (row) { row.classList.add("marquee--static"); });
+      }
+
+      return function () {
+        if (observer) observer.disconnect();
+        instances.forEach(function (i) { i.destroy(); });
+      };
+    });
+  }
+
+  function initPartners() {
+    initMarquees();
+  }
+
+  function initTrustMarquee() {
+    initMarquees();
+  }
+  /* 22A END */
+
   // Initialize on DOMContentLoaded
   document.addEventListener("DOMContentLoaded", function () {
     var mm = gsap.matchMedia();
@@ -612,8 +807,7 @@
       initHeroVideoMotion();
       initRibbons();
       initIntroStats();
-      initPartners();
-      initTrustMarquee();
+      initMarquees();
       initDeclarativeReveals();
     });
   });

@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
   <!-- Font Awesome 6.5 Free CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css">
 
   <!-- Project Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -103,12 +103,12 @@
         </button>
 
         <!-- Call-to-Action Button -->
-        <a href="#contact" class="btn-pill btn-pill--brand-on-dark site-header__cta d-none d-sm-inline-flex">
+        <a href="#contact" class="btn-pill btn-pill--brand site-header__cta d-none d-sm-inline-flex">
           <span class="btn-pill__label">
             <span class="btn-pill__text">Get in touch</span>
             <span class="btn-pill__text" aria-hidden="true">Get in touch</span>
           </span>
-          <span class="btn-pill__icon"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+          <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"></i></span>
         </a>
 
         <!-- Mobile Menu Toggle Button -->
@@ -190,13 +190,13 @@
            ========================================================================== -->
         <section id="home" class="hero-section">
           <!-- Background Stack -->
-          <img class="hero__bg" src="assets/img/hero.jpg" alt="Aparajita Engicon construction site" width="1920"
-            height="1080" loading="eager" fetchpriority="high" decoding="async">
+          <img class="hero__bg" src="assets/videos/poster.webp" alt="Aparajita Engicon construction site"
+            loading="eager" fetchpriority="high" decoding="async">
 
           <!-- HERO VIDEO: START -->
           <video class="hero__video js-hero-video" muted loop playsinline preload="none"
-            poster="assets/img/hero-poster.jpg" aria-hidden="true" tabindex="-1" disablepictureinpicture
-            disableremoteplayback data-hero-video-poster-mobile="assets/img/hero-poster-mobile.jpg"
+            poster="assets/videos/poster.webp" aria-hidden="true" tabindex="-1" disablepictureinpicture
+            disableremoteplayback data-hero-video-poster-mobile="assets/videos/poster.webp"
             data-hero-video-webm-lg="assets/videos/hero-1080.webm" data-hero-video-mp4-lg="assets/videos/hero-1080.mp4"
             data-hero-video-webm-sm="assets/videos/hero-720.webm"
             data-hero-video-mp4-sm="assets/videos/hero-720.mp4"></video>
@@ -246,37 +246,61 @@
           </div>
         </section>
 
+
         <!-- ==========================================================================
-           SECTION 2: RIBBON TICKER (.ribbons)
+           SECTION 11: PARTNERS MARQUEE (#partners)
            ========================================================================== -->
-        <section class="ribbons" aria-label="Company Highlights Marquee">
-          <div class="ribbons__wrapper">
-            <!-- Band A (-2deg) -->
-            <div class="ribbon-band ribbon-band--a">
-              <div class="ribbon-band__track js-ribbon-track-a">
-                <span class="ribbon-band__item">Trusted Since 2005 <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
-                <span class="ribbon-band__item">Design & Build <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
-                <span class="ribbon-band__item">Commercial Construction <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
-                <span class="ribbon-band__item">Custom Homes <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
-                <span class="ribbon-band__item">Industrial Construction <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
+        <section id="partners" class="partners-section section-padding" style="background-color: var(--color-bg);">
+
+
+          <!-- Dual Marquee Logo Rows -->
+          <div class="partners__marquee" role="group" aria-label="Our partners">
+            <!-- Row 1 -->
+            <div class="partners__row marquee" data-marquee-row data-marquee-direction="left" data-marquee-speed="55"
+              data-marquee-start="0">
+              <div class="partners__track marquee__track" data-marquee-track>
+                <ul class="partners__group marquee__group" data-marquee-group>
+                  <li class="partners__tile"><img src="assets/img/clients/cl1.jpg" alt="Partner 1" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl2.jpg" alt="Partner 2" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl3.jpg" alt="Partner 3" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl4.jpg" alt="Partner 4" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl5.jpg" alt="Partner 5" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl6.jpg" alt="Partner 6" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl7.jpg" alt="Partner 7" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl8.jpg" alt="Partner 8" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                </ul>
               </div>
             </div>
-            <!-- Band B (+1.5deg) -->
-            <div class="ribbon-band ribbon-band--b">
-              <div class="ribbon-band__track js-ribbon-track-b">
-                <span class="ribbon-band__item">Renovation & Remodeling <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
-                <span class="ribbon-band__item">Project Management <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
-                <span class="ribbon-band__item">General Contracting <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
-                <span class="ribbon-band__item">Civil & Site Work <i class="fa-solid fa-star-of-life text-brand"
-                    aria-hidden="true"></i></span>
+            <!-- Row 2 (Offset) -->
+            <div class="partners__row partners__row--offset marquee mt-3" data-marquee-row
+              data-marquee-direction="right" data-marquee-speed="45" data-marquee-start="0.35">
+              <div class="partners__track marquee__track" data-marquee-track>
+                <ul class="partners__group marquee__group" data-marquee-group>
+                  <li class="partners__tile"><img src="assets/img/clients/cl11.jpg" alt="Partner 11" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl12.jpg" alt="Partner 12" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl13.jpg" alt="Partner 13" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl14.jpg" alt="Partner 14" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl15.jpg" alt="Partner 15" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl16.jpg" alt="Partner 16" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl17.jpg" alt="Partner 17" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                  <li class="partners__tile"><img src="assets/img/clients/cl18.jpg" alt="Partner 18" width="160"
+                      height="50" loading="lazy" decoding="async"></li>
+                </ul>
               </div>
             </div>
           </div>
@@ -420,7 +444,7 @@
                       <span class="btn-pill__text">Get started now</span>
                       <span class="btn-pill__text" aria-hidden="true">Get started now</span>
                     </span>
-                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"></i></span>
                   </a>
                 </div>
               </div>
@@ -704,7 +728,7 @@
                       reliable schedules.</p>
                   </div>
                   <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                   </div>
                 </a>
               </div>
@@ -719,7 +743,7 @@
                       budget.</p>
                   </div>
                   <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                   </div>
                 </a>
               </div>
@@ -735,7 +759,7 @@
                       budget.</p>
                   </div>
                   <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                   </div>
                 </a>
               </div>
@@ -750,7 +774,7 @@
                     </p>
                   </div>
                   <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                   </div>
                 </a>
               </div>
@@ -765,7 +789,7 @@
                     </p>
                   </div>
                   <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                   </div>
                 </a>
               </div>
@@ -781,7 +805,7 @@
                       quality.</p>
                   </div>
                   <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></span>
+                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
                   </div>
                 </a>
               </div>
@@ -926,7 +950,7 @@
                           </div>
                           <p class="text-muted small mb-4">Ideal for smaller construction, renovation, and professional
                             project management.</p>
-                          <a href="#contact" class="btn-pill btn-pill--dark">
+                          <a href="#contact" class="btn-pill btn-pill--brand">
                             <span class="btn-pill__label">
                               <span class="btn-pill__text">Get a quote</span>
                               <span class="btn-pill__text" aria-hidden="true">Get a quote</span>
@@ -1015,7 +1039,7 @@
                           </div>
                           <p class="text-muted small mb-4">For complex projects requiring tailored scope, dedicated
                             management, and specialized trades.</p>
-                          <a href="#contact" class="btn-pill btn-pill--dark">
+                          <a href="#contact" class="btn-pill btn-pill--brand">
                             <span class="btn-pill__label">
                               <span class="btn-pill__text">Get a quote</span>
                               <span class="btn-pill__text" aria-hidden="true">Get a quote</span>
@@ -1052,6 +1076,8 @@
             </div>
           </section>
 
+
+
           <!-- ==========================================================================
            SECTION 9: TRUST STRIP (#trust)
            ========================================================================== -->
@@ -1062,20 +1088,23 @@
                   <p class="text-muted small font-body m-0">Trusted by leading developers and institutions</p>
                 </div>
                 <div class="col-lg-9">
-                  <div class="trust-marquee overflow-hidden">
-                    <div class="trust-marquee__track js-trust-track d-flex gap-5 align-items-center">
-                      <img src="assets/img/partner-1.svg" alt="Partner 1" width="140" height="45" loading="lazy"
-                        class="trust-logo">
-                      <img src="assets/img/partner-2.svg" alt="Partner 2" width="140" height="45" loading="lazy"
-                        class="trust-logo">
-                      <img src="assets/img/partner-3.svg" alt="Partner 3" width="140" height="45" loading="lazy"
-                        class="trust-logo">
-                      <img src="assets/img/partner-4.svg" alt="Partner 4" width="140" height="45" loading="lazy"
-                        class="trust-logo">
-                      <img src="assets/img/partner-5.svg" alt="Partner 5" width="140" height="45" loading="lazy"
-                        class="trust-logo">
-                      <img src="assets/img/partner-6.svg" alt="Partner 6" width="140" height="45" loading="lazy"
-                        class="trust-logo">
+                  <div class="trust__marquee marquee" data-marquee-row data-marquee-direction="left"
+                    data-marquee-speed="40" data-marquee-start="0">
+                    <div class="trust__track marquee__track" data-marquee-track>
+                      <ul class="trust__group marquee__group" data-marquee-group>
+                        <li class="trust__tile"><img src="assets/img/partner-1.svg" alt="Partner 1" width="140"
+                            height="45" loading="lazy" class="trust-logo"></li>
+                        <li class="trust__tile"><img src="assets/img/partner-2.svg" alt="Partner 2" width="140"
+                            height="45" loading="lazy" class="trust-logo"></li>
+                        <li class="trust__tile"><img src="assets/img/partner-3.svg" alt="Partner 3" width="140"
+                            height="45" loading="lazy" class="trust-logo"></li>
+                        <li class="trust__tile"><img src="assets/img/partner-4.svg" alt="Partner 4" width="140"
+                            height="45" loading="lazy" class="trust-logo"></li>
+                        <li class="trust__tile"><img src="assets/img/partner-5.svg" alt="Partner 5" width="140"
+                            height="45" loading="lazy" class="trust-logo"></li>
+                        <li class="trust__tile"><img src="assets/img/partner-6.svg" alt="Partner 6" width="140"
+                            height="45" loading="lazy" class="trust-logo"></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -1166,7 +1195,8 @@
                     <div class="col-lg-6 bg-brand p-5 d-flex flex-column justify-content-between">
                       <div>
                         <div class="display-5 text-dark mb-4"><i class="fa-solid fa-clipboard-check"
-                            aria-hidden="true"></i></div>
+                            aria-hidden="true"></i>
+                        </div>
                         <h3 class="font-heading display-5 mb-3 text-dark">Construction management</h3>
                         <p class="font-body text-dark">Experienced oversight keeps budgets, schedules, safety, and
                           subcontractors aligned.</p>
@@ -1187,62 +1217,7 @@
             </div>
           </section>
 
-          <!-- ==========================================================================
-           SECTION 11: PARTNERS MARQUEE (#partners) - Matches Reference Screenshot 4
-           ========================================================================== -->
-          <section id="partners" class="section-padding" style="background-color: var(--color-bg);">
-            <div class="container mb-5">
-              <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-4">
-                <div>
-                  <span class="eyebrow" data-anim="fade-up">
-                    <i class="fa-solid fa-bolt" aria-hidden="true"></i> About company
-                  </span>
-                  <h2 class="section-title max-800" data-anim="title">
-                    Integrated seamlessly with trusted industry partners
-                  </h2>
-                </div>
-                <div data-anim="fade-up">
-                  <a href="#contact" class="btn-pill btn-pill--brand">
-                    <span class="btn-pill__label">
-                      <span class="btn-pill__text">Become a partner</span>
-                      <span class="btn-pill__text" aria-hidden="true">Become a partner</span>
-                    </span>
-                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                  </a>
-                </div>
-              </div>
-            </div>
 
-            <!-- Dual Marquee Logo Rows -->
-            <div class="partner-marquee d-flex flex-column gap-3 overflow-hidden">
-              <!-- Row 1 -->
-              <div class="partner-marquee__track js-partner-track-1 d-flex gap-4">
-                <div class="partner-tile"><img src="assets/img/partner-1.svg" alt="Partner 1" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-2.svg" alt="Partner 2" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-3.svg" alt="Partner 3" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-4.svg" alt="Partner 4" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-5.svg" alt="Partner 5" width="160" height="50"
-                    loading="lazy"></div>
-              </div>
-              <!-- Row 2 (Offset) -->
-              <div class="partner-marquee__track js-partner-track-2 d-flex gap-4 ms-5">
-                <div class="partner-tile"><img src="assets/img/partner-6.svg" alt="Partner 6" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-7.svg" alt="Partner 7" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-8.svg" alt="Partner 8" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-9.svg" alt="Partner 9" width="160" height="50"
-                    loading="lazy"></div>
-                <div class="partner-tile"><img src="assets/img/partner-10.svg" alt="Partner 10" width="160" height="50"
-                    loading="lazy"></div>
-              </div>
-            </div>
-          </section>
 
           <!-- ==========================================================================
            SECTION 12: LATEST NEWS (#news)
@@ -1359,7 +1334,8 @@
                       class="faq-badge position-absolute bottom-0 start-0 m-4 p-4 bg-dark text-on-dark rounded-4 shadow-lg border border-secondary"
                       style="max-width: 260px;">
                       <div class="display-3 font-heading text-brand" data-anim="counter" data-counter="10"
-                        data-suffix="+">10+</div>
+                        data-suffix="+">
+                        10+</div>
                       <p class="small text-on-dark-muted m-0 font-body">Years of trusted construction expertise</p>
                     </div>
                   </div>
@@ -1472,7 +1448,8 @@
                       <div
                         class="footer-contact-pill d-flex align-items-center gap-3 p-3 bg-ink rounded-4 border border-secondary">
                         <div class="footer-contact-pill__icon"><i class="fa-solid fa-phone-volume"
-                            aria-hidden="true"></i></div>
+                            aria-hidden="true"></i>
+                        </div>
                         <div>
                           <span class="d-block small text-muted font-heading">Phone number</span>
                           <a href="tel:+910000000000"
@@ -1569,9 +1546,11 @@
               <!-- Bottom Bar -->
               <div
                 class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 py-4 text-on-dark-muted small">
-                <div class="d-flex gap-4">
+                <div class="d-flex gap-4 align-items-center">
                   <a href="#" class="text-on-dark-muted text-decoration-none">Privacy policy</a>
                   <a href="#" class="text-on-dark-muted text-decoration-none">Cookie policy</a>
+                  <button type="button" class="btn-motion-toggle text-on-dark-muted border-0 bg-transparent p-0 small"
+                    data-motion-toggle aria-pressed="false" aria-label="Pause site animations">Pause animations</button>
                 </div>
                 <div>
                   Copyright &copy; <span data-year>2026</span> Aparajita Engicon Pvt Ltd. All rights reserved.
