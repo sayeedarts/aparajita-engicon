@@ -424,72 +424,200 @@
         </section>
 
         <!-- ==========================================================================
-           SECTION 3: INTRO / VALUE PROPS (#intro)
+           SECTION 6A: FEATURED SERVICES (#featured-services)
            ========================================================================== -->
-        <section id="intro" class="section-padding bg-white position-relative">
-          <div class="glow" aria-hidden="true"></div>
-          <div class="container position-relative" style="z-index: 1;">
-            <div class="row align-items-center g-5">
-              <!-- Left Column -->
-              <div class="col-lg-5">
-                <span class="eyebrow" data-anim="fade-up">
-                  <i class="fa-solid fa-bolt" aria-hidden="true"></i> Excellent services
-                </span>
-                <h2 class="section-title mb-4" data-anim="title">
-                  Dependable construction and project delivery
-                </h2>
-                <div data-anim="fade-up" data-delay="0.3">
-                  <a href="#contact" class="btn-pill btn-pill--dark">
-                    <span class="btn-pill__label">
-                      <span class="btn-pill__text">Get started now</span>
-                      <span class="btn-pill__text" aria-hidden="true">Get started now</span>
-                    </span>
-                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"></i></span>
+        <!-- FEATURED SERVICES: START -->
+        <section id="featured-services" class="svc" aria-labelledby="svc-title">
+          <h2 id="svc-title" class="visually-hidden">Featured services</h2>
+
+          <div class="svc__grid" data-svc-grid>
+
+            <div class="svc__panes">
+              <article class="svc-pane svc-pane--1" data-svc-pane aria-labelledby="svc-pane-1-title">
+                <div class="svc-pane__inner">
+                  <p class="svc-pane__meta">
+                    <span class="eyebrow eyebrow--on-dark" data-svc-eyebrow><i class="fa-solid fa-bolt"
+                        aria-hidden="true"></i> Featured service</span>
+                    <span class="svc-pane__count" data-svc-count aria-hidden="true">01 <span class="svc-pane__total">/
+                        06</span></span>
+                    <span class="visually-hidden">Service 1 of 6</span>
+                  </p>
+                  <h3 id="svc-pane-1-title" class="svc-pane__title" data-svc-title>Plumbing Works</h3>
+                  <p class="svc-pane__text" data-svc-text>Complete plumbing design and installation for buildings and
+                    industrial facilities — water supply, drainage, pumping and sanitary systems, tested before
+                    handover. <!-- TODO: confirm copy with client --></p>
+                  <a class="btn-pill btn-pill--ghost" href="#contact" data-svc-cta>
+                    <span class="btn-pill__label"><span class="btn-pill__text">Start your project</span><span
+                        class="btn-pill__text" aria-hidden="true">Start your project</span></span>
+                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                   </a>
                 </div>
-              </div>
+              </article>
 
-              <!-- Right Column (3 Feature Rows) -->
-              <div class="col-lg-7">
-                <div class="d-flex flex-column gap-4">
-                  <!-- Feature 1 -->
-                  <div class="feature-row d-flex gap-4 align-items-start" data-anim="fade-up" data-delay="0.1">
-                    <div class="feature-row__icon">
-                      <i class="fa-solid fa-trowel-bricks" aria-hidden="true"></i>
-                    </div>
-                    <div class="feature-row__content">
-                      <h4 class="font-heading mb-2">Quality workmanship</h4>
-                      <p class="text-muted">Every detail is carefully managed by experienced professionals to ensure
-                        lasting quality and dependable results.</p>
-                    </div>
-                  </div>
-                  <!-- Feature 2 -->
-                  <div class="feature-row d-flex gap-4 align-items-start" data-anim="fade-up" data-delay="0.2">
-                    <div class="feature-row__icon">
-                      <i class="fa-solid fa-helmet-safety" aria-hidden="true"></i>
-                    </div>
-                    <div class="feature-row__content">
-                      <h4 class="font-heading mb-2">Reliable project delivery</h4>
-                      <p class="text-muted">Clear communication, careful planning, and accountable project management
-                        keep every project moving forward.</p>
-                    </div>
-                  </div>
-                  <!-- Feature 3 -->
-                  <div class="feature-row d-flex gap-4 align-items-start" data-anim="fade-up" data-delay="0.3">
-                    <div class="feature-row__icon">
-                      <i class="fa-solid fa-ruler-combined" aria-hidden="true"></i>
-                    </div>
-                    <div class="feature-row__content">
-                      <h4 class="font-heading mb-2">Built with confidence</h4>
-                      <p class="text-muted">From materials and safety to final inspection, we maintain high standards
-                        throughout every stage of construction.</p>
-                    </div>
-                  </div>
+              <article class="svc-pane svc-pane--2" data-svc-pane aria-labelledby="svc-pane-2-title">
+                <div class="svc-pane__inner">
+                  <p class="svc-pane__meta">
+                    <span class="eyebrow eyebrow--on-dark" data-svc-eyebrow><i class="fa-solid fa-bolt"
+                        aria-hidden="true"></i> Featured service</span>
+                    <span class="svc-pane__count" data-svc-count aria-hidden="true">02 <span class="svc-pane__total">/
+                        06</span></span>
+                    <span class="visually-hidden">Service 2 of 6</span>
+                  </p>
+                  <h3 id="svc-pane-2-title" class="svc-pane__title" data-svc-title>Fire Fighting Works</h3>
+                  <p class="svc-pane__text" data-svc-text>Hydrant, sprinkler and pump-room systems engineered, installed
+                    and commissioned for dependable protection when it matters most.
+                    <!-- TODO: confirm copy with client -->
+                  </p>
+                  <a class="btn-pill btn-pill--ghost" href="#contact" data-svc-cta>
+                    <span class="btn-pill__label"><span class="btn-pill__text">Start your project</span><span
+                        class="btn-pill__text" aria-hidden="true">Start your project</span></span>
+                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </a>
                 </div>
+              </article>
+
+              <article class="svc-pane svc-pane--3" data-svc-pane aria-labelledby="svc-pane-3-title">
+                <div class="svc-pane__inner">
+                  <p class="svc-pane__meta">
+                    <span class="eyebrow eyebrow--on-dark" data-svc-eyebrow><i class="fa-solid fa-bolt"
+                        aria-hidden="true"></i> Featured service</span>
+                    <span class="svc-pane__count" data-svc-count aria-hidden="true">03 <span class="svc-pane__total">/
+                        06</span></span>
+                    <span class="visually-hidden">Service 3 of 6</span>
+                  </p>
+                  <h3 id="svc-pane-3-title" class="svc-pane__title" data-svc-title>Water Filtration Plants</h3>
+                  <p class="svc-pane__text" data-svc-text>Design, supply and installation of water treatment and
+                    filtration plants that deliver consistent, clean water for industrial, commercial and residential
+                    use. <!-- TODO: confirm copy with client --></p>
+                  <a class="btn-pill btn-pill--ghost" href="#contact" data-svc-cta>
+                    <span class="btn-pill__label"><span class="btn-pill__text">Start your project</span><span
+                        class="btn-pill__text" aria-hidden="true">Start your project</span></span>
+                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </a>
+                </div>
+              </article>
+
+              <article class="svc-pane svc-pane--4" data-svc-pane aria-labelledby="svc-pane-4-title">
+                <div class="svc-pane__inner">
+                  <p class="svc-pane__meta">
+                    <span class="eyebrow eyebrow--on-dark" data-svc-eyebrow><i class="fa-solid fa-bolt"
+                        aria-hidden="true"></i> Featured service</span>
+                    <span class="svc-pane__count" data-svc-count aria-hidden="true">04 <span class="svc-pane__total">/
+                        06</span></span>
+                    <span class="visually-hidden">Service 4 of 6</span>
+                  </p>
+                  <h3 id="svc-pane-4-title" class="svc-pane__title" data-svc-title>Swimming Pools</h3>
+                  <p class="svc-pane__text" data-svc-text>Pool construction with filtration, circulation and plant-room
+                    systems planned for water quality, safety and low-maintenance operation.
+                    <!-- TODO: confirm copy with client -->
+                  </p>
+                  <a class="btn-pill btn-pill--ghost" href="#contact" data-svc-cta>
+                    <span class="btn-pill__label"><span class="btn-pill__text">Start your project</span><span
+                        class="btn-pill__text" aria-hidden="true">Start your project</span></span>
+                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </a>
+                </div>
+              </article>
+
+              <article class="svc-pane svc-pane--5" data-svc-pane aria-labelledby="svc-pane-5-title">
+                <div class="svc-pane__inner">
+                  <p class="svc-pane__meta">
+                    <span class="eyebrow eyebrow--on-dark" data-svc-eyebrow><i class="fa-solid fa-bolt"
+                        aria-hidden="true"></i> Featured service</span>
+                    <span class="svc-pane__count" data-svc-count aria-hidden="true">05 <span class="svc-pane__total">/
+                        06</span></span>
+                    <span class="visually-hidden">Service 5 of 6</span>
+                  </p>
+                  <h3 id="svc-pane-5-title" class="svc-pane__title" data-svc-title>Civil Works</h3>
+                  <p class="svc-pane__text" data-svc-text>Foundations, structures and site works delivered with
+                    disciplined planning, quality control and safe execution from excavation to finish.
+                    <!-- TODO: confirm copy with client -->
+                  </p>
+                  <a class="btn-pill btn-pill--ghost" href="#contact" data-svc-cta>
+                    <span class="btn-pill__label"><span class="btn-pill__text">Start your project</span><span
+                        class="btn-pill__text" aria-hidden="true">Start your project</span></span>
+                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </a>
+                </div>
+              </article>
+
+              <article class="svc-pane svc-pane--6" data-svc-pane aria-labelledby="svc-pane-6-title">
+                <div class="svc-pane__inner">
+                  <p class="svc-pane__meta">
+                    <span class="eyebrow eyebrow--on-dark" data-svc-eyebrow><i class="fa-solid fa-bolt"
+                        aria-hidden="true"></i> Featured service</span>
+                    <span class="svc-pane__count" data-svc-count aria-hidden="true">06 <span class="svc-pane__total">/
+                        06</span></span>
+                    <span class="visually-hidden">Service 6 of 6</span>
+                  </p>
+                  <h3 id="svc-pane-6-title" class="svc-pane__title" data-svc-title>Engineering Consultancy</h3>
+                  <p class="svc-pane__text" data-svc-text>Technical advice, design and site supervision that turns
+                    requirements into buildable, cost-aware engineering solutions.
+                    <!-- TODO: confirm copy with client -->
+                  </p>
+                  <a class="btn-pill btn-pill--ghost" href="#contact" data-svc-cta>
+                    <span class="btn-pill__label"><span class="btn-pill__text">Start your project</span><span
+                        class="btn-pill__text" aria-hidden="true">Start your project</span></span>
+                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <div class="svc__media">
+              <div class="svc__pin" data-svc-pin>
+                <figure class="svc-media svc-media--1" data-svc-media>
+                  <img class="svc-media__img" data-svc-img src="assets/img/services/plumbing.png"
+                    alt="Plumbing design and installation booster pumps" width="1600" height="1800" loading="lazy"
+                    decoding="async">
+                  <figcaption class="svc-media__tag" data-svc-tag aria-hidden="true"><span>01</span> Plumbing Works
+                  </figcaption>
+                </figure>
+                <figure class="svc-media svc-media--2" data-svc-media>
+                  <img class="svc-media__img" data-svc-img src="assets/img/services/fire.png"
+                    alt="Fire fighting hydrant and sprinkler pump system" width="1600" height="1800" loading="lazy"
+                    decoding="async">
+                  <figcaption class="svc-media__tag" data-svc-tag aria-hidden="true"><span>02</span> Fire Fighting Works
+                  </figcaption>
+                </figure>
+                <figure class="svc-media svc-media--3" data-svc-media>
+                  <img class="svc-media__img" data-svc-img src="assets/img/services/ro.png"
+                    alt="Water treatment and filtration pressure vessels" width="1600" height="1800" loading="lazy"
+                    decoding="async">
+                  <figcaption class="svc-media__tag" data-svc-tag aria-hidden="true"><span>03</span> Water Filtration
+                    Plants</figcaption>
+                </figure>
+                <figure class="svc-media svc-media--4" data-svc-media>
+                  <img class="svc-media__img" data-svc-img src="assets/img/services/pool.png"
+                    alt="Swimming pool filtration plant room" width="1600" height="1800" loading="lazy"
+                    decoding="async">
+                  <figcaption class="svc-media__tag" data-svc-tag aria-hidden="true"><span>04</span> Swimming Pools
+                  </figcaption>
+                </figure>
+                <figure class="svc-media svc-media--5" data-svc-media>
+                  <img class="svc-media__img" data-svc-img src="assets/img/services/fire.png"
+                    alt="Civil construction site with engineers and crane" width="1600" height="1800" loading="lazy"
+                    decoding="async">
+                  <figcaption class="svc-media__tag" data-svc-tag aria-hidden="true"><span>05</span> Civil Works
+                  </figcaption>
+                </figure>
+                <figure class="svc-media svc-media--6" data-svc-media>
+                  <img class="svc-media__img" data-svc-img src="assets/img/services/plumbing.png"
+                    alt="Engineering consultancy blueprints and hardhat" width="1600" height="1800" loading="lazy"
+                    decoding="async">
+                  <figcaption class="svc-media__tag" data-svc-tag aria-hidden="true"><span>06</span> Engineering
+                    Consultancy</figcaption>
+                </figure>
+                <span class="svc__edge" data-svc-edge aria-hidden="true"></span>
+                <span class="svc__progress" aria-hidden="true"><span class="svc__progress-bar"
+                    data-svc-progress></span></span>
               </div>
             </div>
+
           </div>
         </section>
+        <!-- FEATURED SERVICES: END -->
+
 
         <!-- ==========================================================================
            SECTION 4: OUR SERVICES SLIDER (#services)
