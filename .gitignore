@@ -1,0 +1,14 @@
+# Plan & Prompt specifications
+plan/
+
+# OS / Editor temporary metadata
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+.vscode/
+.idea/
+
+# Local environment & dependencies
+.env
+node_modules/

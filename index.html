@@ -17,7 +17,7 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/img/branding/favicon.png">
 
   <!-- Google Fonts: Outfit (Headings) & Jost (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,10 +66,7 @@
     <div class="site-header__inner">
       <!-- Logo -->
       <a href="#home" class="site-header__logo" aria-label="Aparajita Engicon Home">
-        <div class="site-header__logo-icon">
-          <i class="fa-solid fa-building" aria-hidden="true"></i>
-        </div>
-        <span class="site-header__logo-text">Aparajita Engicon</span>
+        <img src="assets/img/branding/logo.webp" alt="" srcset="">
       </a>
 
       <!-- Navigation Pill (lg+) -->
@@ -188,7 +185,7 @@
         <!-- ==========================================================================
            SECTION 1: HERO SECTION (#home)
            ========================================================================== -->
-        <section id="home" class="hero-section">
+        <section id="home" class="hero-section d-none">
           <!-- Background Stack -->
           <img class="hero__bg" src="assets/videos/poster.webp" alt="Aparajita Engicon construction site"
             loading="eager" fetchpriority="high" decoding="async">
@@ -246,11 +243,209 @@
           </div>
         </section>
 
+        <!-- PROJECT SHOWCASE: START -->
+        <section id="project-showcase" class="pshow" data-pshow aria-roledescription="carousel"
+          aria-label="Featured projects">
+          <script>
+            try {
+              if (!sessionStorage.getItem("pshowIntroSeen") && window.scrollY === 0) {
+                document.getElementById("project-showcase").classList.add("pshow--intro");
+                sessionStorage.setItem("pshowIntroSeen", "true");
+              }
+            } catch (e) { }
+          </script>
+          <!-- White Intro Stage & Monogram -->
+          <div class="pshow__intro" aria-hidden="true">
+            <div class="pshow__intro-center">
+              <div class="pshow__intro-progress" aria-hidden="true">
+                <span class="pshow__intro-bar" data-pshow-intro-bar></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scaling Stage with Project Background Slides -->
+          <div class="pshow__stage" data-pshow-stage>
+            <div class="pshow__slides">
+
+              <figure class="pshow__slide" data-pshow-slide role="group" aria-roledescription="slide"
+                aria-label="Project 2 of 5: Residential Tower">
+                <picture>
+                  <source srcset="assets/img/projects/taj-man-singh.jpg" type="image/webp">
+                  <img class="pshow__img" src="assets/img/projects/taj-man-singh.jpg"
+                    alt="Commercial construction project by Aparajita Engicon" width="1920" height="1080"
+                    fetchpriority="high" decoding="async">
+                </picture>
+              </figure>
+              <figure class="pshow__slide" data-pshow-slide role="group" aria-roledescription="slide"
+                aria-label="Project 1 of 5: Commercial Complex">
+                <picture>
+                  <source srcset="assets/img/projects/avantika-luxury-hotel.jpg" type="image/webp">
+                  <img class="pshow__img" src="assets/img/projects/avantika-luxury-hotel.jpg"
+                    alt="Commercial construction project by Aparajita Engicon" width="1920" height="1080"
+                    fetchpriority="high" decoding="async">
+                </picture>
+              </figure>
+              <figure class="pshow__slide" data-pshow-slide role="group" aria-roledescription="slide"
+                aria-label="Project 3 of 5: Water Treatment Plant">
+                <picture>
+                  <source srcset="assets/img/projects/taj-palace.jpg" type="image/webp">
+                  <img class="pshow__img" src="assets/img/projects/taj-palace.jpg"
+                    alt="Commercial construction project by Aparajita Engicon" width="1920" height="1080"
+                    fetchpriority="high" decoding="async">
+                </picture>
+              </figure>
+              <figure class="pshow__slide" data-pshow-slide role="group" aria-roledescription="slide"
+                aria-label="Project 4 of 5: Swimming Pool Facility">
+                <picture>
+                  <source srcset="assets/img/projects/Taj-View-Agra.jpg" type="image/webp">
+                  <img class="pshow__img" src="assets/img/projects/Taj-View-Agra.jpg"
+                    alt="Commercial construction project by Aparajita Engicon" width="1920" height="1080"
+                    fetchpriority="high" decoding="async">
+                </picture>
+              </figure>
+              <figure class="pshow__slide" data-pshow-slide role="group" aria-roledescription="slide"
+                aria-label="Project 5 of 5: Civil Site Infrastructure">
+                <picture>
+                  <source srcset="assets/img/projects/dlf-midtown-plaza.jpg" type="image/webp">
+                  <img class="pshow__img" src="assets/img/projects/dlf-midtown-plaza.jpg"
+                    alt="Commercial construction project by Aparajita Engicon" width="1920" height="1080"
+                    fetchpriority="high" decoding="async">
+                </picture>
+            </div>
+            <div class="pshow__scrim" aria-hidden="true"></div>
+          </div>
+
+          <!-- Hero Content Layer -->
+          <div class="pshow__content" data-pshow-content>
+            <h2 class="pshow__title">
+              <span class="pshow__line"><span class="pshow__line-inner">Projects engineered</span></span>
+              <span class="pshow__line"><span class="pshow__line-inner">with precision</span></span>
+              <span class="pshow__line"><span class="pshow__line-inner">and built to last</span></span>
+            </h2>
+
+            <div class="pshow__bar">
+              <span class="pshow__bar-hairline" aria-hidden="true"></span>
+
+              <!-- Left Column: See Our Work & Categories -->
+              <div class="pshow__col pshow__col--work">
+                <p class="pshow__label">See our work</p>
+                <ul class="pshow__chips">
+                  <li><a class="pshow__chip" href="#service-grid">Commercial</a></li>
+                  <li><a class="pshow__chip" href="#service-grid">Residential</a></li>
+                  <li><a class="pshow__chip" href="#service-grid">Civil &amp; Site</a></li>
+                </ul>
+              </div>
+
+              <!-- Right Column: Latest Work & Thumbnails Strip -->
+              <div class="pshow__col pshow__col--latest">
+                <div class="pshow__latest-head">
+                  <p class="pshow__label">Latest work</p>
+                  <!-- <a class="pshow__view" href="#contact" data-pshow-view>
+                    <span class="pshow__view-text">View project: Commercial Complex</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  </a> -->
+                  <button type="button" class="pshow__toggle" data-pshow-toggle aria-pressed="false"
+                    aria-label="Pause slideshow">
+                    <i class="fa-solid fa-pause" aria-hidden="true"></i>
+                  </button>
+                </div>
+
+                <div class="pshow__strip" data-pshow-strip role="group" aria-label="Choose a project">
+                  <button type="button" class="pshow__thumb pshow__thumb--active" data-pshow-thumb
+                    data-pshow-name="Commercial Complex" data-pshow-cat="Commercial" data-pshow-href="#service-grid"
+                    aria-current="true">
+                    <span class="pshow__thumb-media">
+                      <picture>
+                        <source srcset="assets/img/projects/avantika-luxury-hotel.jpg" type="image/webp">
+                        <img class="pshow__thumb-img" src="assets/img/projects/avantika-luxury-hotel.jpg"
+                          alt="Commercial Complex" width="480" height="360" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                    <span class="pshow__thumb-text">
+                      <span class="pshow__thumb-cat">Commercial</span>
+                      <span class="pshow__thumb-name">Commercial Complex</span>
+                    </span>
+                    <span class="pshow__thumb-progress" aria-hidden="true"><span class="pshow__thumb-bar"></span></span>
+                  </button>
+
+                  <button type="button" class="pshow__thumb" data-pshow-thumb data-pshow-name="Residential Tower"
+                    data-pshow-cat="Residential" data-pshow-href="#service-grid">
+                    <span class="pshow__thumb-media">
+                      <picture>
+                        <source srcset="assets/img/projects/leela-jaipur.jpg" type="image/webp">
+                        <img class="pshow__thumb-img" src="assets/img/projects/leela-jaipur.jpg" alt="Residential Tower"
+                          width="480" height="360" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                    <span class="pshow__thumb-text">
+                      <span class="pshow__thumb-cat">Residential</span>
+                      <span class="pshow__thumb-name">Residential Tower</span>
+                    </span>
+                    <span class="pshow__thumb-progress" aria-hidden="true"><span class="pshow__thumb-bar"></span></span>
+                  </button>
+
+                  <button type="button" class="pshow__thumb" data-pshow-thumb data-pshow-name="Water Treatment Plant"
+                    data-pshow-cat="Industrial" data-pshow-href="#service-grid">
+                    <span class="pshow__thumb-media">
+                      <picture>
+                        <source srcset="assets/img/projects/m3m-crown.jpg" type="image/webp">
+                        <img class="pshow__thumb-img" src="aassets/img/projects/m3m-crown.jpg"
+                          alt="Water Treatment Plant" width="480" height="360" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                    <span class="pshow__thumb-text">
+                      <span class="pshow__thumb-cat">Industrial</span>
+                      <span class="pshow__thumb-name">Water Treatment Plant</span>
+                    </span>
+                    <span class="pshow__thumb-progress" aria-hidden="true"><span class="pshow__thumb-bar"></span></span>
+                  </button>
+
+                  <button type="button" class="pshow__thumb" data-pshow-thumb data-pshow-name="Swimming Pool Facility"
+                    data-pshow-cat="Commercial" data-pshow-href="#service-grid">
+                    <span class="pshow__thumb-media">
+                      <picture>
+                        <source srcset="assets/img/projects/whiteland-gurgaon.jpg" type="image/webp">
+                        <img class="pshow__thumb-img" src="assets/img/projects/whiteland-gurgaon.jpg"
+                          alt="Swimming Pool Facility" width="480" height="360" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                    <span class="pshow__thumb-text">
+                      <span class="pshow__thumb-cat">Commercial</span>
+                      <span class="pshow__thumb-name">Swimming Pool Facility</span>
+                    </span>
+                    <span class="pshow__thumb-progress" aria-hidden="true"><span class="pshow__thumb-bar"></span></span>
+                  </button>
+
+                  <button type="button" class="pshow__thumb" data-pshow-thumb
+                    data-pshow-name="Civil Site Infrastructure" data-pshow-cat="Civil &amp; Site"
+                    data-pshow-href="#service-grid">
+                    <span class="pshow__thumb-media">
+                      <picture>
+                        <source srcset="assets/img/projects/dlf-midtown-plaza.jpg" type="image/webp">
+                        <img class="pshow__thumb-img" src="assets/img/projects/dlf-midtown-plaza.jpg"
+                          alt="Civil Site Infrastructure" width="480" height="360" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                    <span class="pshow__thumb-text">
+                      <span class="pshow__thumb-cat">Civil &amp; Site</span>
+                      <span class="pshow__thumb-name">Civil Site Infrastructure</span>
+                    </span>
+                    <span class="pshow__thumb-progress" aria-hidden="true"><span class="pshow__thumb-bar"></span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="pshow__live visually-hidden" aria-live="polite" data-pshow-live></p>
+        </section>
+        <!-- PROJECT SHOWCASE: END -->
+
 
         <!-- ==========================================================================
            SECTION 11: PARTNERS MARQUEE (#partners)
            ========================================================================== -->
-        <section id="partners" class="partners-section section-padding" style="background-color: var(--color-bg);">
+        <section id="partners" class="partners-section" style="background-color: var(--color-bg);">
 
 
           <!-- Dual Marquee Logo Rows -->
@@ -309,7 +504,7 @@
         <!-- ==========================================================================
            SECTION 2A: INTRO & STATS (#who-we-are)
            ========================================================================== -->
-        <section id="who-we-are" class="intro" aria-labelledby="intro-title">
+        <section id="who-we-are" class="intro d-none" aria-labelledby="intro-title">
           <img class="intro__pattern" src="assets/img/pattern-lines.svg" alt="" aria-hidden="true" width="900"
             height="900" loading="lazy" decoding="async" data-speed="0.85">
           <div class="container intro__inner">
@@ -422,6 +617,247 @@
             </div>
           </div>
         </section>
+
+        <!-- ==========================================================================
+           SECTION: WELCOME (#welcome)
+           ========================================================================== -->
+        <!-- WELCOME: START -->
+        <section id="welcome" class="wlc" data-wlc aria-labelledby="wlc-title">
+          <!-- Fluted Glass & Blob Gradient Background -->
+          <div class="wlc__bg" aria-hidden="true">
+            <span class="wlc__blob wlc__blob--a"></span>
+            <span class="wlc__blob wlc__blob--b"></span>
+            <span class="wlc__blob wlc__blob--c"></span>
+            <div class="wlc__flutes"></div>
+            <div class="wlc__vignette"></div>
+          </div>
+
+          <div class="container wlc__inner">
+            <div class="row align-items-start gy-4 wlc__top">
+              <div class="col-lg-12">
+                <div class="wlc__head">
+                  <p class="wlc__eyebrow"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Welcome to Aparajita
+                    Engicon
+                  </p>
+                  <h2 id="wlc-title" class="wlc__title">
+                    <span class="wlc__line"><span class="wlc__line-inner">Engineering excellence</span></span>
+                    <span class="wlc__line"><span class="wlc__line-inner">built on three decades</span></span>
+                    <span class="wlc__line"><span class="wlc__line-inner">of dependable delivery</span></span>
+                  </h2>
+                </div>
+                <div class="wlc__copy">
+                  <p class="wlc__para" data-wlc-para>
+                    Established in 1990, Aparajita Engicon Pvt. Ltd. is an engineering and contracting company
+                    delivering
+                    plumbing, fire fighting, civil, electrical and HVAC works across Delhi NCR and PAN India. For over
+                    three decades, our multidisciplinary teams have executed projects across hospitality, residential
+                    and
+                    commercial environments with technical depth, disciplined execution and dependable support after
+                    handover.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="wlc__stats" data-wlc-stats>
+                <li class="wlc__stat">
+                  <span class="wlc__stat-index"></span>
+                  <p class="wlc__stat-num">
+                    <span class="wlc__num wlc__num--2" data-wlc-count data-from="0" data-to="30" data-suffix="+"
+                      aria-hidden="true">0+</span>
+                    <span class="visually-hidden">30 plus Years of Industry Experience</span>
+                  </p>
+                  <p class="wlc__stat-label">Years of Industry Experience</p>
+                </li>
+                <li class="wlc__stat">
+                  <span class="wlc__stat-index"></span>
+                  <p class="wlc__stat-num">
+                    <span class="wlc__num wlc__num--4" data-wlc-count data-from="1900" data-to="1990" data-suffix=""
+                      aria-hidden="true">1900</span>
+                    <span class="visually-hidden">1990 Year Established</span>
+                  </p>
+                  <p class="wlc__stat-label">Year Established</p>
+                </li>
+                <li class="wlc__stat">
+                  <span class="wlc__stat-index"></span>
+                  <p class="wlc__stat-num">
+                    <span class="wlc__num wlc__num--2" data-wlc-count data-from="0" data-to="8" data-suffix=""
+                      aria-hidden="true">0</span>
+                    <span class="visually-hidden">8 Core Engineering Disciplines</span>
+                  </p>
+                  <p class="wlc__stat-label">Core Engineering Disciplines</p>
+                </li>
+                <li class="wlc__stat">
+                  <span class="wlc__stat-index"></span>
+                  <p class="wlc__stat-num">
+                    <span class="wlc__num wlc__num--2" data-wlc-count data-from="0" data-to="10" data-suffix="+"
+                      aria-hidden="true">0+</span>
+                    <span class="visually-hidden">10 plus Industry & Business Segments</span>
+                  </p>
+                  <p class="wlc__stat-label">Industry & Business Segments</p>
+                </li>
+              </ul>
+            </div>
+        </section>
+        <!-- WELCOME: END -->
+
+
+        <!-- ==========================================================================
+           SECTION: OUR STRENGTH (#our-strength)
+           ========================================================================== -->
+        <!-- OUR STRENGTH: START -->
+        <section id="our-strength" class="apj-strength" data-apj-strength aria-labelledby="apj-strength-title">
+          <div class="apj-strength__wash" aria-hidden="true"></div>
+          <div class="container apj-strength__inner">
+            <header class="apj-strength__head">
+              <p class="apj-strength__eyebrow">
+                <span class="apj-strength__marker" aria-hidden="true"></span>
+                <span>Our strength</span>
+              </p>
+              <h2 id="apj-strength-title" class="apj-strength__title">
+                <span class="apj-strength__line"><span class="apj-strength__line-inner">Strengths that stand
+                    behind</span></span>
+                <span class="apj-strength__line"><span class="apj-strength__line-inner"><em
+                      class="apj-strength__em">every project we deliver<span class="apj-strength__em-line"
+                        aria-hidden="true"></span></em></span></span>
+              </h2>
+            </header>
+
+            <ul class="apj-strength__grid" data-apj-grid>
+              <!-- Card 1 -->
+              <li class="apj-strength__item">
+                <article class="apj-strength__card" data-apj-card>
+                  <span class="apj-strength__rule" aria-hidden="true"></span>
+                  <span class="apj-strength__icon" aria-hidden="true">
+                    <!-- Lucide: award (ISC License) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <circle cx="12" cy="8" r="6" pathLength="1" />
+                      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" pathLength="1" />
+                    </svg>
+                  </span>
+                  <div class="apj-strength__body">
+                    <h3 class="apj-strength__card-title">
+                      <span data-apj-count data-to="30" data-suffix="+" aria-hidden="true">30+</span>
+                      <span class="visually-hidden">30+</span> Years of Industry Experience
+                    </h3>
+                    <p class="apj-strength__text">Established in 1990 with extensive engineering and contracting
+                      experience.</p>
+                  </div>
+                </article>
+              </li>
+              <!-- Card 2 -->
+              <li class="apj-strength__item">
+                <article class="apj-strength__card" data-apj-card>
+                  <span class="apj-strength__rule" aria-hidden="true"></span>
+                  <span class="apj-strength__icon" aria-hidden="true">
+                    <!-- Lucide: hard-hat (ISC License) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"
+                        pathLength="1" />
+                      <path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5" pathLength="1" />
+                      <path d="M4 15v-3a8 8 0 0 1 16 0v3" pathLength="1" />
+                    </svg>
+                  </span>
+                  <div class="apj-strength__body">
+                    <h3 class="apj-strength__card-title">Qualified Engineering & Technical Professionals</h3>
+                    <p class="apj-strength__text">A multidisciplinary team covering Plumbing, Fire Fighting, Civil,
+                      Electrical and HVAC.</p>
+                  </div>
+                </article>
+              </li>
+              <!-- Card 3 -->
+              <li class="apj-strength__item">
+                <article class="apj-strength__card" data-apj-card>
+                  <span class="apj-strength__rule" aria-hidden="true"></span>
+                  <span class="apj-strength__icon" aria-hidden="true">
+                    <!-- Lucide: users (ISC License) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" pathLength="1" />
+                      <circle cx="9" cy="7" r="4" pathLength="1" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" pathLength="1" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" pathLength="1" />
+                    </svg>
+                  </span>
+                  <div class="apj-strength__body">
+                    <h3 class="apj-strength__card-title">Dedicated Multi-Disciplinary Workforce</h3>
+                    <p class="apj-strength__text">Trained professionals equipped to execute complex engineering
+                      requirements.</p>
+                  </div>
+                </article>
+              </li>
+              <!-- Card 4 -->
+              <li class="apj-strength__item">
+                <article class="apj-strength__card" data-apj-card>
+                  <span class="apj-strength__rule" aria-hidden="true"></span>
+                  <span class="apj-strength__icon" aria-hidden="true">
+                    <!-- Lucide: building-2 (ISC License) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" pathLength="1" />
+                      <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" pathLength="1" />
+                      <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" pathLength="1" />
+                      <path d="M10 6h4" pathLength="1" />
+                      <path d="M10 10h4" pathLength="1" />
+                      <path d="M10 14h4" pathLength="1" />
+                      <path d="M10 18h4" pathLength="1" />
+                    </svg>
+                  </span>
+                  <div class="apj-strength__body">
+                    <h3 class="apj-strength__card-title">Track Record Across Diverse Sectors</h3>
+                    <p class="apj-strength__text">Experience spanning hospitality, residential and commercial
+                      environments.</p>
+                  </div>
+                </article>
+              </li>
+              <!-- Card 5 -->
+              <li class="apj-strength__item">
+                <article class="apj-strength__card" data-apj-card>
+                  <span class="apj-strength__rule" aria-hidden="true"></span>
+                  <span class="apj-strength__icon" aria-hidden="true">
+                    <!-- Lucide: map-pin (ISC License) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path
+                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0Z"
+                        pathLength="1" />
+                      <circle cx="12" cy="10" r="3" pathLength="1" />
+                    </svg>
+                  </span>
+                  <div class="apj-strength__body">
+                    <h3 class="apj-strength__card-title">Project Execution Capability</h3>
+                    <p class="apj-strength__text">Capability to execute projects across Delhi NCR and PAN India.</p>
+                  </div>
+                </article>
+              </li>
+              <!-- Card 6 -->
+              <li class="apj-strength__item">
+                <article class="apj-strength__card" data-apj-card>
+                  <span class="apj-strength__rule" aria-hidden="true"></span>
+                  <span class="apj-strength__icon" aria-hidden="true">
+                    <!-- Lucide: wrench (ISC License) -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                        pathLength="1" />
+                    </svg>
+                  </span>
+                  <div class="apj-strength__body">
+                    <h3 class="apj-strength__card-title">Structured AMC Support</h3>
+                    <p class="apj-strength__text">Annual Maintenance Contract support for selected handover projects.
+                    </p>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- OUR STRENGTH: END -->
+
+
+
 
         <!-- ==========================================================================
            SECTION 6A: FEATURED SERVICES (#featured-services)
@@ -620,1087 +1056,634 @@
 
 
         <!-- ==========================================================================
-           SECTION 4: OUR SERVICES SLIDER (#services)
+           SECTION 6B: SIGNATURE PROJECTS (#apj-projects)
            ========================================================================== -->
-        <section id="services" class="section-padding bg-white">
-          <div class="container text-center mb-5">
-            <span class="eyebrow" data-anim="fade-up">
-              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Our services
-            </span>
-            <h2 class="section-title mx-auto max-760" data-anim="title">
-              Construction services built around your project
-            </h2>
-            <p class="text-muted mx-auto max-640 mt-3" data-anim="fade-up" data-delay="0.2">
-              From ground-up commercial builds to residential construction and renovations, our team coordinates every
-              detail for safe work, clear schedules, and lasting quality.
-            </p>
+        <!-- APJ PROJECTS: START -->
+        <section id="apj-projects" class="apj-projects" aria-labelledby="apj-projects-title">
 
-            <!-- Trust Avatar Stack -->
-            <div class="d-inline-flex align-items-center gap-3 mt-4 px-4 py-2 bg-light rounded-pill border"
-              data-anim="fade-up" data-delay="0.3">
-              <div class="avatar-stack d-flex">
-                <img src="assets/img/avatar-1.jpg" alt="Client 1" width="40" height="40" class="avatar-stack__img"
-                  loading="lazy">
-                <img src="assets/img/avatar-2.jpg" alt="Client 2" width="40" height="40" class="avatar-stack__img"
-                  loading="lazy">
-                <img src="assets/img/avatar-3.jpg" alt="Client 3" width="40" height="40" class="avatar-stack__img"
-                  loading="lazy">
-              </div>
-              <span class="small font-body text-dark font-weight-500">Trusted by 500+ clients across all project
-                types</span>
+          <header class="apj-projects__head container">
+            <div class="apj-projects__head-main">
+              <span class="apj-eyebrow" data-apj-anim="eyebrow"><i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                Signature projects</span>
+              <h2 id="apj-projects-title" class="apj-projects__title" data-apj-anim="title">Building Trust Through
+                Projects</h2>
             </div>
-          </div>
+            <p class="apj-projects__intro" data-apj-anim="text">Our project experience spans residential developments,
+              commercial complexes, hospitality destinations, institutional facilities and premium developments across
+              diverse locations.</p>
+            <!-- <span class="apj-projects__rule" data-apj-anim="rule" aria-hidden="true"></span> -->
+          </header>
 
-          <!-- Services Carousel Slider -->
-          <div class="container position-relative">
-            <button type="button" class="svc-slider__nav svc-slider__nav--prev" aria-label="Previous slide">
-              <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="svc-slider__nav svc-slider__nav--next" aria-label="Next slide">
-              <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-            </button>
-
-            <div class="svc-slider__track" role="region" aria-roledescription="carousel" aria-label="Our services">
-              <!-- Slide 1 -->
-              <div class="svc-slide" data-anim="fade-up" data-delay="0.1">
-                <img src="assets/img/service-1.jpg" alt="Commercial Construction" width="600" height="800"
-                  loading="lazy" class="svc-slide__img">
-                <div class="svc-slide__overlay"></div>
-                <div class="svc-slide__content">
-                  <div class="svc-slide__icon"><i class="fa-solid fa-building" aria-hidden="true"></i></div>
-                  <h3 class="svc-slide__title">Commercial construction</h3>
-                  <p class="svc-slide__desc">Ground-up commercial projects delivered with coordinated trades and
-                    reliable schedules.</p>
-                </div>
-              </div>
-              <!-- Slide 2 -->
-              <div class="svc-slide" data-anim="fade-up" data-delay="0.2">
-                <img src="assets/img/service-2.jpg" alt="Residential Construction" width="600" height="800"
-                  loading="lazy" class="svc-slide__img">
-                <div class="svc-slide__overlay"></div>
-                <div class="svc-slide__content">
-                  <div class="svc-slide__icon"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></div>
-                  <h3 class="svc-slide__title">Residential construction</h3>
-                  <p class="svc-slide__desc">Custom homes and residential projects built around your goals and budget.
-                  </p>
-                </div>
-              </div>
-              <!-- Slide 3 -->
-              <div class="svc-slide" data-anim="fade-up" data-delay="0.3">
-                <img src="assets/img/service-3.jpg" alt="Renovation and remodeling" width="600" height="800"
-                  loading="lazy" class="svc-slide__img">
-                <div class="svc-slide__overlay"></div>
-                <div class="svc-slide__content">
-                  <div class="svc-slide__icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
-                  <h3 class="svc-slide__title">Renovation and remodeling</h3>
-                  <p class="svc-slide__desc">Modernize existing spaces while protecting structure, schedule, and budget.
-                  </p>
-                </div>
-              </div>
-              <!-- Slide 4 -->
-              <div class="svc-slide">
-                <img src="assets/img/service-4.jpg" alt="Design-build services" width="600" height="800" loading="lazy"
-                  class="svc-slide__img">
-                <div class="svc-slide__overlay"></div>
-                <div class="svc-slide__content">
-                  <div class="svc-slide__icon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i></div>
-                  <h3 class="svc-slide__title">Design-build services</h3>
-                  <p class="svc-slide__desc">One accountable team coordinating design, estimating, and construction.</p>
-                </div>
-              </div>
-              <!-- Slide 5 -->
-              <div class="svc-slide">
-                <img src="assets/img/service-5.jpg" alt="Civil and site work" width="600" height="800" loading="lazy"
-                  class="svc-slide__img">
-                <div class="svc-slide__overlay"></div>
-                <div class="svc-slide__content">
-                  <div class="svc-slide__icon"><i class="fa-solid fa-map" aria-hidden="true"></i></div>
-                  <h3 class="svc-slide__title">Civil and site work</h3>
-                  <p class="svc-slide__desc">Site preparation, grading, concrete, utilities, and civil coordination.</p>
-                </div>
-              </div>
-              <!-- Slide 6 -->
-              <div class="svc-slide">
-                <img src="assets/img/service-6.jpg" alt="Construction management" width="600" height="800"
-                  loading="lazy" class="svc-slide__img">
-                <div class="svc-slide__overlay"></div>
-                <div class="svc-slide__content">
-                  <div class="svc-slide__icon"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i></div>
-                  <h3 class="svc-slide__title">Construction management</h3>
-                  <p class="svc-slide__desc">Clear oversight of budgets, schedules, safety, subcontractors, and quality.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ==========================================================================
-           SECTION 5: ABOUT COMPANY (#about) - Matches Reference Screenshot 5
-           ========================================================================== -->
-        <section id="about" class="section-padding" style="background-color: var(--color-bg);">
           <div class="container">
-            <!-- Top Section Header -->
-            <div class="mb-5">
-              <span class="eyebrow" data-anim="fade-up">
-                <i class="fa-solid fa-bolt" aria-hidden="true"></i> About company
-              </span>
-              <h2 class="section-title max-800" data-anim="title">
-                Building stronger spaces for businesses and communities
-              </h2>
-            </div>
+            <ol class="apj-stack container" data-apj-stack>
+              <!-- Project Card 01 -->
+              <li class="apj-stack__item" data-apj-item>
+                <article class="apj-pcard" data-apj-card aria-labelledby="apj-pcard-1-title">
+                  <img class="apj-pcard__img" data-apj-img src="assets/img/project-manore-one.jpg"
+                    alt="Manore One, Gurugram" width="1920" height="1200" loading="lazy" decoding="async">
+                  <span class="apj-pcard__shade" data-apj-shade aria-hidden="true"></span>
 
-            <div class="row align-items-center g-5">
-              <!-- Left Column Content -->
-              <div class="col-lg-6">
-                <h3 class="font-heading h2 mb-4" data-anim="fade-up">Complete general contracting services</h3>
-                <p class="text-muted mb-4 pe-lg-4" data-anim="fade-up" data-delay="0.1">
-                  At Aparajita Engicon, we turn plans into dependable places to work, live, and grow — combining
-                  practical construction expertise with careful coordination and transparent communication.
-                </p>
+                  <div class="apj-pcard__chips" data-apj-chips>
+                    <span class="apj-chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Gurugram</span>
+                    <span class="apj-chip"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Plumbing
+                      Works <!-- TODO: confirm category --></span>
+                  </div>
 
-                <!-- Checklist -->
-                <ul class="check-list mb-5" data-anim="fade-up" data-delay="0.2">
-                  <li class="check-list__item">
-                    <span class="check-list__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
-                    Preconstruction planning
-                  </li>
-                  <li class="check-list__item">
-                    <span class="check-list__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
-                    Quality control standards
-                  </li>
-                  <li class="check-list__item">
-                    <span class="check-list__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
-                    Materials and procurement
-                  </li>
-                  <li class="check-list__item">
-                    <span class="check-list__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
-                    Proven track record
-                  </li>
-                  <li class="check-list__item">
-                    <span class="check-list__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
-                    Customer-centric approach
-                  </li>
-                  <li class="check-list__item">
-                    <span class="check-list__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
-                    24 X 7 Call & chat support
-                  </li>
-                </ul>
+                  <div class="apj-pcard__body">
+                    <p class="apj-pcard__count" data-apj-count><span>01</span> / 07</p>
+                    <h3 id="apj-pcard-1-title" class="apj-pcard__title" data-apj-title>Manore One</h3>
+                  </div>
 
-                <div data-anim="fade-up" data-delay="0.3">
-                  <a href="#about" class="btn-pill btn-pill--brand">
-                    <span class="btn-pill__label">
-                      <span class="btn-pill__text">About us</span>
-                      <span class="btn-pill__text" aria-hidden="true">About us</span>
+                  <a class="apj-pcard__cta" href="#contact" data-apj-cta>
+                    <span class="apj-pcard__cta-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                    <span class="apj-pcard__cta-text">
+                      <strong>Discuss a similar project</strong>
+                      <span>Talk to our engineers</span>
                     </span>
-                    <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+                    <span class="apj-pcard__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
                   </a>
-                </div>
-              </div>
+                </article>
+              </li>
 
-              <!-- Right Column Image Composition -->
-              <div class="col-lg-6">
-                <div class="about-comp position-relative" data-anim="fade-up" data-delay="0.2">
-                  <div class="row g-3 align-items-end">
-                    <div class="col-6">
-                      <img src="assets/img/about-1.jpg" alt="Construction site worker" width="600" height="600"
-                        loading="lazy" class="about-comp__img about-comp__img--1 shadow">
-                    </div>
-                    <div class="col-6">
-                      <img src="assets/img/about-2.jpg" alt="Structural Engineer in white helmet" width="600"
-                        height="800" loading="lazy" class="about-comp__img about-comp__img--2 shadow">
-                    </div>
+              <!-- Project Card 02 -->
+              <li class="apj-stack__item" data-apj-item>
+                <article class="apj-pcard" data-apj-card aria-labelledby="apj-pcard-2-title">
+                  <img class="apj-pcard__img" data-apj-img src="assets/img/project-tashee-capital-gateway.jpg"
+                    alt="Tashee Capital Gateway, Gurugram" width="1920" height="1200" loading="lazy" decoding="async">
+                  <span class="apj-pcard__shade" data-apj-shade aria-hidden="true"></span>
+
+                  <div class="apj-pcard__chips" data-apj-chips>
+                    <span class="apj-chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Gurugram</span>
+                    <span class="apj-chip"><i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i> Fire
+                      Fighting Works <!-- TODO: confirm category --></span>
                   </div>
 
-                  <!-- Rotating Badge -->
-                  <div class="about-badge" aria-hidden="true">
-                    <svg viewBox="0 0 100 100" width="124" height="124">
-                      <path id="badgePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-                      <text font-size="11.5" font-family="Outfit" font-weight="600" fill="#0A0A0A" letter-spacing="1.5">
-                        <textPath href="#badgePath">ABOUT US &bull; ABOUT US &bull; ABOUT US &bull; </textPath>
-                      </text>
-                    </svg>
-                    <div class="about-badge__center"></div>
+                  <div class="apj-pcard__body">
+                    <p class="apj-pcard__count" data-apj-count><span>02</span> / 07</p>
+                    <h3 id="apj-pcard-2-title" class="apj-pcard__title" data-apj-title>Tashee Capital Gateway</h3>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        <!-- ==========================================================================
-           SECTION 6: SERVICES GRID (#service-grid) - Matches Reference Screenshot 3
-           ========================================================================== -->
-        <section id="service-grid" class="section-padding bg-white position-relative">
-          <div class="glow" aria-hidden="true"></div>
-          <div class="container position-relative" style="z-index: 1;">
-            <div class="text-center mb-5">
-              <span class="eyebrow" data-anim="fade-up">
-                <i class="fa-solid fa-bolt" aria-hidden="true"></i> Excellent services
-              </span>
-              <h2 class="section-title mx-auto max-760" data-anim="title">
-                10+ years of experience in the construction industry
-              </h2>
-            </div>
-
-            <!-- 6 Dotted Cards Grid -->
-            <div class="row g-4">
-              <!-- Card 1 -->
-              <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.1">
-                <a href="#service-grid"
-                  class="dot-card d-flex flex-column justify-content-between h-100 text-decoration-none">
-                  <div>
-                    <div class="dot-card__icon mb-4"><i class="fa-solid fa-building" aria-hidden="true"></i></div>
-                    <h3 class="dot-card__title mb-3">Commercial construction</h3>
-                    <p class="text-muted small">Ground-up commercial projects delivered with coordinated trades and
-                      reliable schedules.</p>
-                  </div>
-                  <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-              <!-- Card 2 -->
-              <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.2">
-                <a href="#service-grid"
-                  class="dot-card d-flex flex-column justify-content-between h-100 text-decoration-none">
-                  <div>
-                    <div class="dot-card__icon mb-4"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></div>
-                    <h3 class="dot-card__title mb-3">Residential construction</h3>
-                    <p class="text-muted small">Custom homes and residential projects built around your goals and
-                      budget.</p>
-                  </div>
-                  <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-              <!-- Card 3 -->
-              <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.3">
-                <a href="#service-grid"
-                  class="dot-card d-flex flex-column justify-content-between h-100 text-decoration-none">
-                  <div>
-                    <div class="dot-card__icon mb-4"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
-                    </div>
-                    <h3 class="dot-card__title mb-3">Renovation and remodeling</h3>
-                    <p class="text-muted small">Modernize existing spaces while protecting structure, schedule, and
-                      budget.</p>
-                  </div>
-                  <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-              <!-- Card 4 -->
-              <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.4">
-                <a href="#service-grid"
-                  class="dot-card d-flex flex-column justify-content-between h-100 text-decoration-none">
-                  <div>
-                    <div class="dot-card__icon mb-4"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i></div>
-                    <h3 class="dot-card__title mb-3">Design-build services</h3>
-                    <p class="text-muted small">One accountable team coordinating design, estimating, and construction.
-                    </p>
-                  </div>
-                  <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-              <!-- Card 5 -->
-              <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.5">
-                <a href="#service-grid"
-                  class="dot-card d-flex flex-column justify-content-between h-100 text-decoration-none">
-                  <div>
-                    <div class="dot-card__icon mb-4"><i class="fa-solid fa-map" aria-hidden="true"></i></div>
-                    <h3 class="dot-card__title mb-3">Civil and site work</h3>
-                    <p class="text-muted small">Site preparation, grading, concrete, utilities, and civil coordination.
-                    </p>
-                  </div>
-                  <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-              <!-- Card 6 -->
-              <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.6">
-                <a href="#service-grid"
-                  class="dot-card d-flex flex-column justify-content-between h-100 text-decoration-none">
-                  <div>
-                    <div class="dot-card__icon mb-4"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
-                    </div>
-                    <h3 class="dot-card__title mb-3">Construction management</h3>
-                    <p class="text-muted small">Clear oversight of budgets, schedules, safety, subcontractors, and
-                      quality.</p>
-                  </div>
-                  <div class="dot-card__btn mt-4">
-                    <span class="dot-card__arrow"><i class="fa-solid fa-arrow-right"></i></span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ==========================================================================
-           SECTION 7: TEAM GRID (#team)
-           ========================================================================== -->
-        <section id="team" class="section-padding" style="background-color: var(--color-bg);">
-          <div class="container">
-            <div class="row g-3">
-              <!-- Cell 1: Black Feature Card -->
-              <div class="col-lg-3 col-md-6" data-anim="fade-up">
-                <div class="team-card team-card--dark p-4 d-flex flex-column justify-content-between h-100 rounded-4">
-                  <div>
-                    <div class="team-card__icon mb-3"><i class="fa-solid fa-users-gear text-brand display-6"
-                        aria-hidden="true"></i></div>
-                    <h3 class="font-heading text-on-dark h3">Experienced builders & project leaders</h3>
-                  </div>
-                  <a href="#team"
-                    class="btn btn-outline-warning rounded-pill px-3 py-2 small mt-4 text-start font-body">Meet the
-                    team</a>
-                </div>
-              </div>
-              <!-- Cell 2-8: Team Photo Cards -->
-              <div class="col-lg-3 col-md-6" data-anim="fade-up" data-delay="0.1">
-                <div class="team-card">
-                  <img src="assets/img/team-1.jpg" alt="Ramesh Verma - Managing Director" width="400" height="480"
-                    loading="lazy" class="team-card__img">
-                  <div class="team-card__tag">
-                    <h4 class="team-card__name">Ramesh Verma</h4>
-                    <span class="team-card__role">Managing Director</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6" data-anim="fade-up" data-delay="0.2">
-                <div class="team-card">
-                  <img src="assets/img/team-2.jpg" alt="Ananya Sharma - Lead Architect" width="400" height="480"
-                    loading="lazy" class="team-card__img">
-                  <div class="team-card__tag">
-                    <h4 class="team-card__name">Ananya Sharma</h4>
-                    <span class="team-card__role">Lead Architect</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6" data-anim="fade-up" data-delay="0.3">
-                <div class="team-card">
-                  <img src="assets/img/team-3.jpg" alt="Vikram Singh - Project Manager" width="400" height="480"
-                    loading="lazy" class="team-card__img">
-                  <div class="team-card__tag">
-                    <h4 class="team-card__name">Vikram Singh</h4>
-                    <span class="team-card__role">Senior Project Manager</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6" data-anim="fade-up" data-delay="0.4">
-                <div class="team-card">
-                  <img src="assets/img/team-4.jpg" alt="Pooja Mehta - Structural Engineer" width="400" height="480"
-                    loading="lazy" class="team-card__img">
-                  <div class="team-card__tag">
-                    <h4 class="team-card__name">Pooja Mehta</h4>
-                    <span class="team-card__role">Structural Engineer</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6" data-anim="fade-up" data-delay="0.5">
-                <div class="team-card">
-                  <img src="assets/img/team-5.jpg" alt="Sanjay Patel - Site Supervisor" width="400" height="480"
-                    loading="lazy" class="team-card__img">
-                  <div class="team-card__tag">
-                    <h4 class="team-card__name">Sanjay Patel</h4>
-                    <span class="team-card__role">Site Operations Chief</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6" data-anim="fade-up" data-delay="0.6">
-                <div class="team-card">
-                  <img src="assets/img/team-6.jpg" alt="Neha Gupta - Quality Auditor" width="400" height="480"
-                    loading="lazy" class="team-card__img">
-                  <div class="team-card__tag">
-                    <h4 class="team-card__name">Neha Gupta</h4>
-                    <span class="team-card__role">Quality Control Head</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6" data-anim="fade-up" data-delay="0.7">
-                <div class="team-card">
-                  <img src="assets/img/team-7.jpg" alt="Amit Kumar - Safety Officer" width="400" height="480"
-                    loading="lazy" class="team-card__img">
-                  <div class="team-card__tag">
-                    <h4 class="team-card__name">Amit Kumar</h4>
-                    <span class="team-card__role">Safety Officer</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ==========================================================================
-           SECTION 8: PRICING / PLANS (#plans)
-           ========================================================================== -->
-          <section id="plans" class="section-padding bg-white">
-            <div class="container">
-              <div class="row g-5">
-                <!-- Left Column (Sticky Overview) -->
-                <div class="col-lg-4">
-                  <div class="plans-sticky">
-                    <span class="eyebrow" data-anim="fade-up">
-                      <i class="fa-solid fa-bolt" aria-hidden="true"></i> Best pricing plans
+                  <a class="apj-pcard__cta" href="#contact" data-apj-cta>
+                    <span class="apj-pcard__cta-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                    <span class="apj-pcard__cta-text">
+                      <strong>Discuss a similar project</strong>
+                      <span>Talk to our engineers</span>
                     </span>
-                    <h2 class="section-title mb-4" data-anim="title">
-                      Flexible solutions for every project
-                    </h2>
-                    <p class="text-muted mb-4" data-anim="fade-up" data-delay="0.1">
-                      From focused renovations to complete commercial builds, choose the level of support that fits your
-                      project. Every package is tailored around scope, transparency, and reliable delivery.
-                    </p>
-                    <div data-anim="fade-up" data-delay="0.2">
-                      <a href="#contact" class="btn-pill btn-pill--brand">
-                        <span class="btn-pill__label">
-                          <span class="btn-pill__text">Get a quote</span>
-                          <span class="btn-pill__text" aria-hidden="true">Get a quote</span>
-                        </span>
-                        <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                      </a>
-                    </div>
+                    <span class="apj-pcard__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                </article>
+              </li>
+
+              <!-- Project Card 03 -->
+              <li class="apj-stack__item" data-apj-item>
+                <article class="apj-pcard" data-apj-card aria-labelledby="apj-pcard-3-title">
+                  <img class="apj-pcard__img" data-apj-img src="assets/img/project-m3m-anthea.jpg"
+                    alt="M3M Anthea, Gurugram" width="1920" height="1200" loading="lazy" decoding="async">
+                  <span class="apj-pcard__shade" data-apj-shade aria-hidden="true"></span>
+
+                  <div class="apj-pcard__chips" data-apj-chips>
+                    <span class="apj-chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Gurugram</span>
+                    <span class="apj-chip"><i class="fa-solid fa-filter" aria-hidden="true"></i> Water Filtration Plants
+                      <!-- TODO: confirm category --></span>
                   </div>
-                </div>
 
-                <!-- Right Column (Plan Cards Stack) -->
-                <div class="col-lg-8">
-                  <div class="d-flex flex-column gap-4">
-                    <!-- Plan 1: Essential Build -->
-                    <div class="plan-card dot-card" data-anim="fade-up" data-delay="0.1">
-                      <div class="row g-4 align-items-center">
-                        <div class="col-md-6">
-                          <h3 class="font-heading h3 mb-2">Essential Build</h3>
-                          <div class="plan-card__price mb-3">
-                            <span class="h1 font-heading text-ink" data-anim="counter" data-counter="25"
-                              data-suffix=" Lakh">From Rs 25 Lakh</span>
-                          </div>
-                          <p class="text-muted small mb-4">Ideal for smaller construction, renovation, and professional
-                            project management.</p>
-                          <a href="#contact" class="btn-pill btn-pill--brand">
-                            <span class="btn-pill__label">
-                              <span class="btn-pill__text">Get a quote</span>
-                              <span class="btn-pill__text" aria-hidden="true">Get a quote</span>
-                            </span>
-                            <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"
-                                aria-hidden="true"></i></span>
-                          </a>
-                        </div>
-                        <div class="col-md-6 border-start-md ps-md-4">
-                          <h4 class="font-heading h5 mb-3">What's included?</h4>
-                          <ul class="check-list">
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Quality materials</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Safety management</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Project planning</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Site preparation</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Skilled labour</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Plan 2: Complete Build (Black Featured Card) -->
-                    <div class="plan-card plan-card--dark p-4 p-md-5 rounded-4 position-relative" data-anim="fade-up"
-                      data-delay="0.2">
-                      <span
-                        class="badge bg-warning text-dark position-absolute top-0 end-0 m-4 px-3 py-2 rounded-pill font-body font-weight-600">Most
-                        popular</span>
-                      <div class="row g-4 align-items-center">
-                        <div class="col-md-6">
-                          <h3 class="font-heading h3 text-on-dark mb-2">Complete Build</h3>
-                          <div class="plan-card__price mb-3">
-                            <span class="h1 font-heading text-brand" data-anim="counter" data-counter="75"
-                              data-suffix=" Lakh">From Rs 75 Lakh</span>
-                          </div>
-                          <p class="text-on-dark-muted small mb-4">Designed for larger residential and commercial
-                            projects requiring full coordination.</p>
-                          <a href="#contact" class="btn-pill btn-pill--brand">
-                            <span class="btn-pill__label">
-                              <span class="btn-pill__text">Get a quote</span>
-                              <span class="btn-pill__text" aria-hidden="true">Get a quote</span>
-                            </span>
-                            <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"
-                                aria-hidden="true"></i></span>
-                          </a>
-                        </div>
-                        <div class="col-md-6 border-start-md border-secondary ps-md-4">
-                          <h4 class="font-heading h5 text-on-dark mb-3">What's included?</h4>
-                          <ul class="check-list">
-                            <li class="check-list__item small text-on-dark"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Complete project management</li>
-                            <li class="check-list__item small text-on-dark"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Design & build coordination</li>
-                            <li class="check-list__item small text-on-dark"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Premium materials</li>
-                            <li class="check-list__item small text-on-dark"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Skilled contractor team</li>
-                            <li class="check-list__item small text-on-dark"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Quality & safety control</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Plan 3: Custom Project -->
-                    <div class="plan-card dot-card" data-anim="fade-up" data-delay="0.3">
-                      <div class="row g-4 align-items-center">
-                        <div class="col-md-6">
-                          <h3 class="font-heading h3 mb-2">Custom Project</h3>
-                          <div class="plan-card__price mb-3">
-                            <span class="h1 font-heading text-ink">Let's Talk</span>
-                          </div>
-                          <p class="text-muted small mb-4">For complex projects requiring tailored scope, dedicated
-                            management, and specialized trades.</p>
-                          <a href="#contact" class="btn-pill btn-pill--brand">
-                            <span class="btn-pill__label">
-                              <span class="btn-pill__text">Get a quote</span>
-                              <span class="btn-pill__text" aria-hidden="true">Get a quote</span>
-                            </span>
-                            <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"
-                                aria-hidden="true"></i></span>
-                          </a>
-                        </div>
-                        <div class="col-md-6 border-start-md ps-md-4">
-                          <h4 class="font-heading h5 mb-3">What's included?</h4>
-                          <ul class="check-list">
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Custom project planning</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Dedicated project manager</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Specialised trades</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Supplier coordination</li>
-                            <li class="check-list__item small"><span
-                                class="check-list__icon check-list__icon--yellow"><i class="fa-solid fa-check"
-                                  aria-hidden="true"></i></span> Final inspection & handover</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="apj-pcard__body">
+                    <p class="apj-pcard__count" data-apj-count><span>03</span> / 07</p>
+                    <h3 id="apj-pcard-3-title" class="apj-pcard__title" data-apj-title>M3M Anthea</h3>
                   </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
+                  <a class="apj-pcard__cta" href="#contact" data-apj-cta>
+                    <span class="apj-pcard__cta-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                    <span class="apj-pcard__cta-text">
+                      <strong>Discuss a similar project</strong>
+                      <span>Talk to our engineers</span>
+                    </span>
+                    <span class="apj-pcard__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                </article>
+              </li>
 
+              <!-- Project Card 04 -->
+              <li class="apj-stack__item" data-apj-item>
+                <article class="apj-pcard" data-apj-card aria-labelledby="apj-pcard-4-title">
+                  <img class="apj-pcard__img" data-apj-img src="assets/img/project-gulshan-ikebana.jpg"
+                    alt="Gulshan Ikebana, Noida" width="1920" height="1200" loading="lazy" decoding="async">
+                  <span class="apj-pcard__shade" data-apj-shade aria-hidden="true"></span>
 
-          <!-- ==========================================================================
-           SECTION 9: TRUST STRIP (#trust)
-           ========================================================================== -->
-          <section id="trust" class="py-5" style="background-color: var(--color-bg);">
-            <div class="container">
-              <div class="row align-items-center g-4">
-                <div class="col-lg-3">
-                  <p class="text-muted small font-body m-0">Trusted by leading developers and institutions</p>
-                </div>
-                <div class="col-lg-9">
-                  <div class="trust__marquee marquee" data-marquee-row data-marquee-direction="left"
-                    data-marquee-speed="40" data-marquee-start="0">
-                    <div class="trust__track marquee__track" data-marquee-track>
-                      <ul class="trust__group marquee__group" data-marquee-group>
-                        <li class="trust__tile"><img src="assets/img/partner-1.svg" alt="Partner 1" width="140"
-                            height="45" loading="lazy" class="trust-logo"></li>
-                        <li class="trust__tile"><img src="assets/img/partner-2.svg" alt="Partner 2" width="140"
-                            height="45" loading="lazy" class="trust-logo"></li>
-                        <li class="trust__tile"><img src="assets/img/partner-3.svg" alt="Partner 3" width="140"
-                            height="45" loading="lazy" class="trust-logo"></li>
-                        <li class="trust__tile"><img src="assets/img/partner-4.svg" alt="Partner 4" width="140"
-                            height="45" loading="lazy" class="trust-logo"></li>
-                        <li class="trust__tile"><img src="assets/img/partner-5.svg" alt="Partner 5" width="140"
-                            height="45" loading="lazy" class="trust-logo"></li>
-                        <li class="trust__tile"><img src="assets/img/partner-6.svg" alt="Partner 6" width="140"
-                            height="45" loading="lazy" class="trust-logo"></li>
-                      </ul>
-                    </div>
+                  <div class="apj-pcard__chips" data-apj-chips>
+                    <span class="apj-chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Noida</span>
+                    <span class="apj-chip"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i> Swimming Pools
+                      <!-- TODO: confirm category --></span>
                   </div>
-                </div>
-              </div>
-            </div>
-          </section>
 
-          <!-- ==========================================================================
-           SECTION 10: EXPERIENCE STACKING CARDS (#experience)
-           ========================================================================== -->
-          <section id="experience" class="section-padding bg-white position-relative">
-            <div class="glow" aria-hidden="true"></div>
-            <div class="container position-relative" style="z-index: 1;">
-              <div class="text-center mb-5">
-                <span class="eyebrow" data-anim="fade-up">
-                  <i class="fa-solid fa-bolt" aria-hidden="true"></i> Experience
+                  <div class="apj-pcard__body">
+                    <p class="apj-pcard__count" data-apj-count><span>04</span> / 07</p>
+                    <h3 id="apj-pcard-4-title" class="apj-pcard__title" data-apj-title>Gulshan Ikebana</h3>
+                  </div>
+
+                  <a class="apj-pcard__cta" href="#contact" data-apj-cta>
+                    <span class="apj-pcard__cta-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                    <span class="apj-pcard__cta-text">
+                      <strong>Discuss a similar project</strong>
+                      <span>Talk to our engineers</span>
+                    </span>
+                    <span class="apj-pcard__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                </article>
+              </li>
+
+              <!-- Project Card 05 -->
+              <li class="apj-stack__item" data-apj-item>
+                <article class="apj-pcard" data-apj-card aria-labelledby="apj-pcard-5-title">
+                  <img class="apj-pcard__img" data-apj-img src="assets/img/project-taj-hari-mahal.jpg"
+                    alt="Taj Hari Mahal, Jodhpur" width="1920" height="1200" loading="lazy" decoding="async">
+                  <span class="apj-pcard__shade" data-apj-shade aria-hidden="true"></span>
+
+                  <div class="apj-pcard__chips" data-apj-chips>
+                    <span class="apj-chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Jodhpur</span>
+                    <span class="apj-chip"><i class="fa-solid fa-trowel-bricks" aria-hidden="true"></i> Civil Works
+                      <!-- TODO: confirm category --></span>
+                  </div>
+
+                  <div class="apj-pcard__body">
+                    <p class="apj-pcard__count" data-apj-count><span>05</span> / 07</p>
+                    <h3 id="apj-pcard-5-title" class="apj-pcard__title" data-apj-title>Taj Hari Mahal</h3>
+                  </div>
+
+                  <a class="apj-pcard__cta" href="#contact" data-apj-cta>
+                    <span class="apj-pcard__cta-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                    <span class="apj-pcard__cta-text">
+                      <strong>Discuss a similar project</strong>
+                      <span>Talk to our engineers</span>
+                    </span>
+                    <span class="apj-pcard__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                </article>
+              </li>
+
+              <!-- Project Card 06 -->
+              <li class="apj-stack__item" data-apj-item>
+                <article class="apj-pcard" data-apj-card aria-labelledby="apj-pcard-6-title">
+                  <img class="apj-pcard__img" data-apj-img src="assets/img/project-taj-lavantika.jpg"
+                    alt="Taj Lavantika, Varanasi" width="1920" height="1200" loading="lazy" decoding="async">
+                  <span class="apj-pcard__shade" data-apj-shade aria-hidden="true"></span>
+
+                  <div class="apj-pcard__chips" data-apj-chips>
+                    <span class="apj-chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Varanasi</span>
+                    <span class="apj-chip"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i> Engineering
+                      Consultancy <!-- TODO: confirm category --></span>
+                  </div>
+
+                  <div class="apj-pcard__body">
+                    <p class="apj-pcard__count" data-apj-count><span>06</span> / 07</p>
+                    <h3 id="apj-pcard-6-title" class="apj-pcard__title" data-apj-title>Taj Lavantika</h3>
+                  </div>
+
+                  <a class="apj-pcard__cta" href="#contact" data-apj-cta>
+                    <span class="apj-pcard__cta-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                    <span class="apj-pcard__cta-text">
+                      <strong>Discuss a similar project</strong>
+                      <span>Talk to our engineers</span>
+                    </span>
+                    <span class="apj-pcard__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                </article>
+              </li>
+
+              <!-- Project Card 07 -->
+              <li class="apj-stack__item" data-apj-item>
+                <article class="apj-pcard" data-apj-card aria-labelledby="apj-pcard-7-title">
+                  <img class="apj-pcard__img" data-apj-img src="assets/img/project-taj-mahal-jaipur.jpg"
+                    alt="Taj Mahal, Jaipur" width="1920" height="1200" loading="lazy" decoding="async">
+                  <span class="apj-pcard__shade" data-apj-shade aria-hidden="true"></span>
+
+                  <div class="apj-pcard__chips" data-apj-chips>
+                    <span class="apj-chip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Jaipur</span>
+                    <span class="apj-chip"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Plumbing
+                      Works <!-- TODO: confirm category --></span>
+                  </div>
+
+                  <div class="apj-pcard__body">
+                    <p class="apj-pcard__count" data-apj-count><span>07</span> / 07</p>
+                    <h3 id="apj-pcard-7-title" class="apj-pcard__title" data-apj-title>Taj Mahal</h3>
+                  </div>
+
+                  <a class="apj-pcard__cta" href="#contact" data-apj-cta>
+                    <span class="apj-pcard__cta-icon" aria-hidden="true"><i class="fa-regular fa-building"></i></span>
+                    <span class="apj-pcard__cta-text">
+                      <strong>Discuss a similar project</strong>
+                      <span>Talk to our engineers</span>
+                    </span>
+                    <span class="apj-pcard__cta-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                </article>
+              </li>
+            </ol>
+
+            <div class="apj-bottom-buttons">
+              <a href="#contact" class="btn-pill btn-pill--brand site-header__cta">
+                <span class="btn-pill__label">
+                  <span class="btn-pill__text">View ALL</span>
+                  <span class="btn-pill__text" aria-hidden="true">Get in touch</span>
                 </span>
-                <h2 class="section-title mx-auto max-760" data-anim="title">
-                  10+ years of experience in the construction industry
-                </h2>
-              </div>
+                <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
 
-              <!-- Stacking Cards Wrapper -->
-              <div class="experience-stack d-flex flex-column gap-5">
-                <!-- Card 1 -->
-                <div class="stack-card overflow-hidden shadow-lg" data-anim="fade-up">
-                  <div class="row g-0 h-100">
-                    <div class="col-lg-6">
-                      <img src="assets/img/exp-1.jpg" alt="Commercial Construction Project" width="800" height="600"
-                        loading="lazy" class="stack-card__img h-100 w-100">
-                    </div>
-                    <div class="col-lg-6 bg-brand p-5 d-flex flex-column justify-content-between">
-                      <div>
-                        <div class="display-5 text-dark mb-4"><i class="fa-solid fa-building" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="font-heading display-5 mb-3 text-dark">Commercial construction</h3>
-                        <p class="font-body text-dark">Ground-up facilities built with disciplined coordination, safe
-                          execution, and dependable schedules.</p>
-                      </div>
-                      <div class="mt-4">
-                        <a href="#services" class="btn-pill btn-pill--dark">
-                          <span class="btn-pill__label">
-                            <span class="btn-pill__text">View services</span>
-                            <span class="btn-pill__text" aria-hidden="true">View services</span>
-                          </span>
-                          <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="stack-card overflow-hidden shadow-lg" data-anim="fade-up" data-delay="0.2">
-                  <div class="row g-0 h-100">
-                    <div class="col-lg-6">
-                      <img src="assets/img/exp-2.jpg" alt="Renovation & Remodeling Project" width="800" height="600"
-                        loading="lazy" class="stack-card__img h-100 w-100">
-                    </div>
-                    <div class="col-lg-6 bg-brand p-5 d-flex flex-column justify-content-between">
-                      <div>
-                        <div class="display-5 text-dark mb-4"><i class="fa-solid fa-screwdriver-wrench"
-                            aria-hidden="true"></i></div>
-                        <h3 class="font-heading display-5 mb-3 text-dark">Renovation and remodeling</h3>
-                        <p class="font-body text-dark">Upgrade occupied and existing spaces with careful phasing,
-                          quality control, and minimal disruption.</p>
-                      </div>
-                      <div class="mt-4">
-                        <a href="#services" class="btn-pill btn-pill--dark">
-                          <span class="btn-pill__label">
-                            <span class="btn-pill__text">View services</span>
-                            <span class="btn-pill__text" aria-hidden="true">View services</span>
-                          </span>
-                          <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="stack-card overflow-hidden shadow-lg" data-anim="fade-up" data-delay="0.4">
-                  <div class="row g-0 h-100">
-                    <div class="col-lg-6">
-                      <img src="assets/img/exp-3.jpg" alt="Construction Management Operations" width="800" height="600"
-                        loading="lazy" class="stack-card__img h-100 w-100">
-                    </div>
-                    <div class="col-lg-6 bg-brand p-5 d-flex flex-column justify-content-between">
-                      <div>
-                        <div class="display-5 text-dark mb-4"><i class="fa-solid fa-clipboard-check"
-                            aria-hidden="true"></i>
-                        </div>
-                        <h3 class="font-heading display-5 mb-3 text-dark">Construction management</h3>
-                        <p class="font-body text-dark">Experienced oversight keeps budgets, schedules, safety, and
-                          subcontractors aligned.</p>
-                      </div>
-                      <div class="mt-4">
-                        <a href="#services" class="btn-pill btn-pill--dark">
-                          <span class="btn-pill__label">
-                            <span class="btn-pill__text">View services</span>
-                            <span class="btn-pill__text" aria-hidden="true">View services</span>
-                          </span>
-                          <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-
-
-          <!-- ==========================================================================
-           SECTION 12: LATEST NEWS (#news)
-           ========================================================================== -->
-          <section id="news" class="section-padding bg-white">
-            <div class="container">
-              <div class="text-center mb-5">
-                <span class="eyebrow" data-anim="fade-up">
-                  <i class="fa-solid fa-bolt" aria-hidden="true"></i> Latest news
+              <a href="#contact" class="btn-pill btn-pill--brand site-header__cta ">
+                <span class="btn-pill__label">
+                  <span class="btn-pill__text">Get In Touch</span>
+                  <span class="btn-pill__text" aria-hidden="true">Get in touch</span>
                 </span>
-                <h2 class="section-title mx-auto max-760" data-anim="title">
-                  Insights from the field and construction industry
-                </h2>
-              </div>
-
-              <div class="row g-4 mb-5">
-                <!-- Article 1 -->
-                <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.1">
-                  <article class="news-card h-100 d-flex flex-column justify-content-between">
-                    <div>
-                      <div class="news-card__img-wrap position-relative mb-4 overflow-hidden rounded-4">
-                        <img src="assets/img/news-1.jpg" alt="Preconstruction Planning" width="600" height="450"
-                          loading="lazy" class="w-100 h-auto">
-                        <span
-                          class="news-card__date badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">12
-                          Oct 2026</span>
-                      </div>
-                      <div class="news-card__meta d-flex gap-3 small text-muted mb-2">
-                        <span><i class="fa-solid fa-user me-1" aria-hidden="true"></i> Technical Team</span>
-                        <span><i class="fa-solid fa-folder me-1" aria-hidden="true"></i> Planning</span>
-                      </div>
-                      <h3 class="news-card__title font-heading h4 mb-3">How preconstruction planning keeps projects on
-                        track</h3>
-                    </div>
-                    <a href="#news" class="news-card__link font-body font-weight-500 text-dark text-decoration-none">
-                      Read article <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
-                    </a>
-                  </article>
-                </div>
-
-                <!-- Article 2 -->
-                <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.2">
-                  <article class="news-card h-100 d-flex flex-column justify-content-between">
-                    <div>
-                      <div class="news-card__img-wrap position-relative mb-4 overflow-hidden rounded-4">
-                        <img src="assets/img/news-2.jpg" alt="Commercial Construction Trends" width="600" height="450"
-                          loading="lazy" class="w-100 h-auto">
-                        <span
-                          class="news-card__date badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">08
-                          Oct 2026</span>
-                      </div>
-                      <div class="news-card__meta d-flex gap-3 small text-muted mb-2">
-                        <span><i class="fa-solid fa-user me-1" aria-hidden="true"></i> Industry Insights</span>
-                        <span><i class="fa-solid fa-folder me-1" aria-hidden="true"></i> Commercial</span>
-                      </div>
-                      <h3 class="news-card__title font-heading h4 mb-3">Construction trends shaping commercial projects
-                      </h3>
-                    </div>
-                    <a href="#news" class="news-card__link font-body font-weight-500 text-dark text-decoration-none">
-                      Read article <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
-                    </a>
-                  </article>
-                </div>
-
-                <!-- Article 3 -->
-                <div class="col-lg-4 col-md-6" data-anim="fade-up" data-delay="0.3">
-                  <article class="news-card h-100 d-flex flex-column justify-content-between">
-                    <div>
-                      <div class="news-card__img-wrap position-relative mb-4 overflow-hidden rounded-4">
-                        <img src="assets/img/news-3.jpg" alt="Contractor Expectations" width="600" height="450"
-                          loading="lazy" class="w-100 h-auto">
-                        <span
-                          class="news-card__date badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">02
-                          Oct 2026</span>
-                      </div>
-                      <div class="news-card__meta d-flex gap-3 small text-muted mb-2">
-                        <span><i class="fa-solid fa-user me-1" aria-hidden="true"></i> Project Management</span>
-                        <span><i class="fa-solid fa-folder me-1" aria-hidden="true"></i> Quality</span>
-                      </div>
-                      <h3 class="news-card__title font-heading h4 mb-3">What to expect from a dependable general
-                        contractor</h3>
-                    </div>
-                    <a href="#news" class="news-card__link font-body font-weight-500 text-dark text-decoration-none">
-                      Read article <i class="fa-solid fa-arrow-right ms-2" aria-hidden="true"></i>
-                    </a>
-                  </article>
-                </div>
-              </div>
-
-              <div class="text-center" data-anim="fade-up">
-                <a href="#news" class="btn-pill btn-pill--brand">
-                  <span class="btn-pill__label">
-                    <span class="btn-pill__text">More news</span>
-                    <span class="btn-pill__text" aria-hidden="true">More news</span>
-                  </span>
-                  <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-                </a>
-              </div>
+                <span class="btn-pill__icon"><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
             </div>
-          </section>
 
-          <!-- ==========================================================================
+
+          </div>
+
+
+
+        </section>
+        <!-- APJ PROJECTS: END -->
+
+
+
+
+        <!-- ==========================================================================
+           SECTION: INDUSTRIES WE SERVE (#industries)
+           ========================================================================== -->
+        <!-- INDUSTRIES: START -->
+        <section id="industries" class="apj-industries" data-apj-industries aria-labelledby="apj-industries-title">
+          <div class="apj-industries__bg" aria-hidden="true">
+            <div class="apj-industries__glow"></div>
+            <div class="apj-industries__blueprint"></div>
+            <div class="apj-industries__dots apj-industries__dots--far"></div>
+            <div class="apj-industries__dots apj-industries__dots--near"></div>
+            <div class="apj-industries__scan"></div>
+          </div>
+          <div class="container apj-industries__inner">
+            <header class="apj-industries__head">
+              <p class="apj-industries__eyebrow">
+                <span class="apj-industries__eyebrow-dot" aria-hidden="true"></span>
+                <span>Industries We Serve</span>
+              </p>
+              <h2 id="apj-industries-title" class="apj-industries__title">
+                <span class="apj-industries__line"><span class="apj-industries__line-inner">Engineering
+                    Expertise</span></span>
+                <span class="apj-industries__line"><span class="apj-industries__line-inner">Across Diverse</span></span>
+                <span class="apj-industries__line"><span class="apj-industries__line-inner"><em
+                      class="apj-industries__em">Built Environments<span class="apj-industries__em-line"
+                        aria-hidden="true"></span></em></span></span>
+              </h2>
+              <p class="apj-industries__intro">Our multidisciplinary engineering capability enables us to adapt
+                technical solutions and execution methodologies to the specific requirements of different sectors.</p>
+            </header>
+            <div class="apj-industries__panel">
+              <ul class="apj-industries__list">
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">01</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-building"></i></span>
+                  <span class="apj-industries__name">Corporate Offices</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">02</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-hospital"></i></span>
+                  <span class="apj-industries__name">Hospitals &amp; Healthcare</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">03</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-hotel"></i></span>
+                  <span class="apj-industries__name">Hotels &amp; Hospitality</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">04</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-industry"></i></span>
+                  <span class="apj-industries__name">Industrial Facilities</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">05</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-bag-shopping"></i></span>
+                  <span class="apj-industries__name">Shopping Malls &amp; Retail</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">06</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-city"></i></span>
+                  <span class="apj-industries__name">Commercial Complexes</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">07</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-house-chimney"></i></span>
+                  <span class="apj-industries__name">Premium Residential</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">08</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i
+                      class="fa-solid fa-building-columns"></i></span>
+                  <span class="apj-industries__name">Banking Institutions</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">09</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i class="fa-solid fa-house-user"></i></span>
+                  <span class="apj-industries__name">Villas &amp; Private Residences</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+                <li class="apj-industries__item" data-apj-item>
+                  <span class="apj-industries__rule" aria-hidden="true"></span>
+                  <span class="apj-industries__index" aria-hidden="true">10</span>
+                  <span class="apj-industries__icon" aria-hidden="true"><i
+                      class="fa-solid fa-graduation-cap"></i></span>
+                  <span class="apj-industries__name">Educational Institutions</span>
+                  <span class="apj-industries__arrow" aria-hidden="true"><i
+                      class="fa-solid fa-arrow-up-right"></i></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <!-- INDUSTRIES: END -->
+
+
+
+
+        <!-- ==========================================================================
            SECTION 13: FAQ ACCORDION (#faq)
            ========================================================================== -->
-          <section id="faq" class="section-padding" style="background-color: var(--color-bg);">
-            <div class="container">
-              <div class="row g-5 align-items-center">
-                <!-- Left Column Image + Floating Badge -->
-                <div class="col-lg-5" data-anim="fade-up">
-                  <div class="faq-img-wrap position-relative">
-                    <img src="assets/img/faq.jpg" alt="Architectural Consultation" width="600" height="750"
-                      loading="lazy" class="w-100 rounded-4 shadow">
-                    <div
-                      class="faq-badge position-absolute bottom-0 start-0 m-4 p-4 bg-dark text-on-dark rounded-4 shadow-lg border border-secondary"
-                      style="max-width: 260px;">
-                      <div class="display-3 font-heading text-brand" data-anim="counter" data-counter="10"
-                        data-suffix="+">
-                        10+</div>
-                      <p class="small text-on-dark-muted m-0 font-body">Years of trusted construction expertise</p>
-                    </div>
+        <section id="faq" class="section-padding" style="background-color: var(--color-bg);">
+          <div class="container">
+            <div class="row g-5 align-items-center">
+              <!-- Left Column Image + Floating Badge -->
+              <div class="col-lg-5" data-anim="fade-up">
+                <div class="faq-img-wrap position-relative">
+                  <img src="assets/img/faq.jpg" alt="Architectural Consultation" width="600" height="750" loading="lazy"
+                    class="w-100 rounded-4 shadow">
+                  <div
+                    class="faq-badge position-absolute bottom-0 start-0 m-4 p-4 bg-dark text-on-dark rounded-4 shadow-lg border border-secondary"
+                    style="max-width: 260px;">
+                    <div class="display-3 font-heading text-brand" data-anim="counter" data-counter="10"
+                      data-suffix="+">
+                      10+</div>
+                    <p class="small text-on-dark-muted m-0 font-body">Years of trusted construction expertise</p>
                   </div>
                 </div>
+              </div>
 
-                <!-- Right Column Accordion -->
-                <div class="col-lg-7">
-                  <span class="eyebrow" data-anim="fade-up">
-                    <i class="fa-solid fa-bolt" aria-hidden="true"></i> Have any questions?
-                  </span>
-                  <h2 class="section-title mb-4" data-anim="title">
-                    Here are some answers for you
-                  </h2>
+              <!-- Right Column Accordion -->
+              <div class="col-lg-7">
+                <span class="eyebrow" data-anim="fade-up">
+                  <i class="fa-solid fa-bolt" aria-hidden="true"></i> Have any questions?
+                </span>
+                <h2 class="section-title mb-4" data-anim="title">
+                  Here are some answers for you
+                </h2>
 
-                  <div class="accordion custom-accordion" id="faqAccordion">
-                    <!-- Item 1 -->
-                    <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.1">
-                      <h3 class="accordion-header" id="headingOne">
-                        <button class="accordion-button font-heading h4 text-ink bg-transparent py-4 shadow-none"
-                          type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                          aria-controls="collapseOne">
-                          How long does a construction project usually take?
-                        </button>
-                      </h3>
-                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#faqAccordion">
-                        <div class="accordion-body text-muted pt-0 pb-4">
-                          Timelines depend on scope, permits, and site conditions. We provide a detailed schedule up
-                          front and keep you updated on every milestone.
-                        </div>
+                <div class="accordion custom-accordion" id="faqAccordion">
+                  <!-- Item 1 -->
+                  <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.1">
+                    <h3 class="accordion-header" id="headingOne">
+                      <button class="accordion-button font-heading h4 text-ink bg-transparent py-4 shadow-none"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        How long does a construction project usually take?
+                      </button>
+                    </h3>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                      data-bs-parent="#faqAccordion">
+                      <div class="accordion-body text-muted pt-0 pb-4">
+                        Timelines depend on scope, permits, and site conditions. We provide a detailed schedule up
+                        front and keep you updated on every milestone.
                       </div>
                     </div>
-                    <!-- Item 2 -->
-                    <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.2">
-                      <h3 class="accordion-header" id="headingTwo">
-                        <button
-                          class="accordion-button collapsed font-heading h4 text-ink bg-transparent py-4 shadow-none"
-                          type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                          aria-controls="collapseTwo">
-                          Can you work while a building stays occupied?
-                        </button>
-                      </h3>
-                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#faqAccordion">
-                        <div class="accordion-body text-muted pt-0 pb-4">
-                          Yes. We plan phasing, safe access, and noise control so occupied spaces keep running with
-                          minimal disruption.
-                        </div>
+                  </div>
+                  <!-- Item 2 -->
+                  <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.2">
+                    <h3 class="accordion-header" id="headingTwo">
+                      <button
+                        class="accordion-button collapsed font-heading h4 text-ink bg-transparent py-4 shadow-none"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                        aria-controls="collapseTwo">
+                        Can you work while a building stays occupied?
+                      </button>
+                    </h3>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#faqAccordion">
+                      <div class="accordion-body text-muted pt-0 pb-4">
+                        Yes. We plan phasing, safe access, and noise control so occupied spaces keep running with
+                        minimal disruption.
                       </div>
                     </div>
-                    <!-- Item 3 -->
-                    <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.3">
-                      <h3 class="accordion-header" id="headingThree">
-                        <button
-                          class="accordion-button collapsed font-heading h4 text-ink bg-transparent py-4 shadow-none"
-                          type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                          aria-controls="collapseThree">
-                          What is included in preconstruction?
-                        </button>
-                      </h3>
-                      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#faqAccordion">
-                        <div class="accordion-body text-muted pt-0 pb-4">
-                          Feasibility review, budgeting, scheduling, value engineering, material planning, and
-                          subcontractor coordination.
-                        </div>
+                  </div>
+                  <!-- Item 3 -->
+                  <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.3">
+                    <h3 class="accordion-header" id="headingThree">
+                      <button
+                        class="accordion-button collapsed font-heading h4 text-ink bg-transparent py-4 shadow-none"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                        aria-controls="collapseThree">
+                        What is included in preconstruction?
+                      </button>
+                    </h3>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                      data-bs-parent="#faqAccordion">
+                      <div class="accordion-body text-muted pt-0 pb-4">
+                        Feasibility review, budgeting, scheduling, value engineering, material planning, and
+                        subcontractor coordination.
                       </div>
                     </div>
-                    <!-- Item 4 -->
-                    <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.4">
-                      <h3 class="accordion-header" id="headingFour">
-                        <button
-                          class="accordion-button collapsed font-heading h4 text-ink bg-transparent py-4 shadow-none"
-                          type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                          aria-controls="collapseFour">
-                          How do you manage budgets and change orders?
-                        </button>
-                      </h3>
-                      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                        data-bs-parent="#faqAccordion">
-                        <div class="accordion-body text-muted pt-0 pb-4">
-                          Every cost is tracked against an agreed budget. Changes are documented, priced, and approved
-                          by you before work proceeds.
-                        </div>
+                  </div>
+                  <!-- Item 4 -->
+                  <div class="accordion-item border-bottom bg-transparent" data-anim="fade-up" data-delay="0.4">
+                    <h3 class="accordion-header" id="headingFour">
+                      <button
+                        class="accordion-button collapsed font-heading h4 text-ink bg-transparent py-4 shadow-none"
+                        type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                        aria-controls="collapseFour">
+                        How do you manage budgets and change orders?
+                      </button>
+                    </h3>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                      data-bs-parent="#faqAccordion">
+                      <div class="accordion-body text-muted pt-0 pb-4">
+                        Every cost is tracked against an agreed budget. Changes are documented, priced, and approved
+                        by you before work proceeds.
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <!-- ==========================================================================
+        <!-- ==========================================================================
            SECTION 14: FOOTER (#contact) - Matches Reference Screenshot 2
            ========================================================================== -->
-          <footer id="contact" class="site-footer bg-dark text-on-dark pt-5">
-            <div class="container">
-              <!-- Row 1: Logo & 3 Contact Highlight Pills -->
-              <div class="row align-items-center g-4 pb-5 border-bottom border-secondary">
-                <div class="col-lg-3">
-                  <a href="#home" class="d-flex align-items-center gap-3 text-decoration-none">
-                    <div class="site-header__logo-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></div>
-                    <span class="font-heading h3 text-on-dark m-0">Aparajita Engicon</span>
-                  </a>
-                </div>
-                <div class="col-lg-9">
-                  <div class="row g-3">
-                    <!-- Phone Highlight -->
-                    <div class="col-md-4">
-                      <div
-                        class="footer-contact-pill d-flex align-items-center gap-3 p-3 bg-ink rounded-4 border border-secondary">
-                        <div class="footer-contact-pill__icon"><i class="fa-solid fa-phone-volume"
-                            aria-hidden="true"></i>
-                        </div>
-                        <div>
-                          <span class="d-block small text-muted font-heading">Phone number</span>
-                          <a href="tel:+910000000000"
-                            class="font-body font-weight-500 text-on-dark text-decoration-none">+91 00000 00000</a>
-                        </div>
+        <footer id="contact" class="site-footer bg-dark text-on-dark pt-5">
+          <div class="container">
+            <!-- Row 1: Logo & 3 Contact Highlight Pills -->
+            <div class="row align-items-center g-4 pb-5 border-bottom border-secondary">
+              <div class="col-lg-3">
+                <a href="#home" class="d-flex align-items-center gap-3 text-decoration-none">
+                  <div class="site-header__logo-icon"><i class="fa-solid fa-building" aria-hidden="true"></i></div>
+                  <span class="font-heading h3 text-on-dark m-0">Aparajita Engicon</span>
+                </a>
+              </div>
+              <div class="col-lg-9">
+                <div class="row g-3">
+                  <!-- Phone Highlight -->
+                  <div class="col-md-4">
+                    <div
+                      class="footer-contact-pill d-flex align-items-center gap-3 p-3 bg-ink rounded-4 border border-secondary">
+                      <div class="footer-contact-pill__icon"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
+                      </div>
+                      <div>
+                        <span class="d-block small text-muted font-heading">Phone number</span>
+                        <a href="tel:+910000000000"
+                          class="font-body font-weight-500 text-on-dark text-decoration-none">+91 00000 00000</a>
                       </div>
                     </div>
-                    <!-- Email Highlight -->
-                    <div class="col-md-4">
-                      <div
-                        class="footer-contact-pill d-flex align-items-center gap-3 p-3 bg-ink rounded-4 border border-secondary">
-                        <div class="footer-contact-pill__icon"><i class="fa-solid fa-envelope-open-text"
-                            aria-hidden="true"></i></div>
-                        <div>
-                          <span class="d-block small text-muted font-heading">Email us here</span>
-                          <a href="mailto:info@aparajitaengicon.com"
-                            class="font-body font-weight-500 text-on-dark text-decoration-none">info@aparajitaengicon.com</a>
-                        </div>
+                  </div>
+                  <!-- Email Highlight -->
+                  <div class="col-md-4">
+                    <div
+                      class="footer-contact-pill d-flex align-items-center gap-3 p-3 bg-ink rounded-4 border border-secondary">
+                      <div class="footer-contact-pill__icon"><i class="fa-solid fa-envelope-open-text"
+                          aria-hidden="true"></i></div>
+                      <div>
+                        <span class="d-block small text-muted font-heading">Email us here</span>
+                        <a href="mailto:info@aparajitaengicon.com"
+                          class="font-body font-weight-500 text-on-dark text-decoration-none">info@aparajitaengicon.com</a>
                       </div>
                     </div>
-                    <!-- Location Highlight -->
-                    <div class="col-md-4">
-                      <div
-                        class="footer-contact-pill d-flex align-items-center gap-3 p-3 bg-ink rounded-4 border border-secondary">
-                        <div class="footer-contact-pill__icon"><i class="fa-solid fa-map" aria-hidden="true"></i></div>
-                        <div>
-                          <span class="d-block small text-muted font-heading">Our location</span>
-                          <span class="font-body font-weight-500 text-on-dark">City Center Zone, India</span>
-                        </div>
+                  </div>
+                  <!-- Location Highlight -->
+                  <div class="col-md-4">
+                    <div
+                      class="footer-contact-pill d-flex align-items-center gap-3 p-3 bg-ink rounded-4 border border-secondary">
+                      <div class="footer-contact-pill__icon"><i class="fa-solid fa-map" aria-hidden="true"></i></div>
+                      <div>
+                        <span class="d-block small text-muted font-heading">Our location</span>
+                        <span class="font-body font-weight-500 text-on-dark">City Center Zone, India</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Row 2: 4 Columns -->
-              <div class="row g-5 py-5 border-bottom border-secondary">
-                <!-- Col 1: About -->
-                <div class="col-lg-3 col-md-6">
-                  <h4 class="font-heading h4 text-on-dark mb-4">About Aparajita Engicon</h4>
-                  <p class="text-on-dark-muted small">
-                    Aparajita Engicon Pvt Ltd is a dependable engineering and general contracting company delivering
-                    commercial construction, residential building, renovations, and site management with safety and
-                    precision.
-                  </p>
-                </div>
-
-                <!-- Col 2: Useful Links -->
-                <div class="col-lg-3 col-md-6">
-                  <h4 class="font-heading h4 text-on-dark mb-4">Useful links</h4>
-                  <ul class="footer-links d-flex flex-column gap-2 p-0 m-0">
-                    <li><a href="#home" class="text-on-dark-muted small">Home</a></li>
-                    <li><a href="#who-we-are" class="text-on-dark-muted small">Who We Are</a></li>
-                    <li><a href="#about" class="text-on-dark-muted small">About Us</a></li>
-                    <li><a href="#services" class="text-on-dark-muted small">Services</a></li>
-                    <li><a href="#team" class="text-on-dark-muted small">Team</a></li>
-                    <li><a href="#news" class="text-on-dark-muted small">News</a></li>
-                    <li><a href="#contact" class="text-on-dark-muted small">Contact us</a></li>
-                  </ul>
-                </div>
-
-                <!-- Col 3: Contact Info -->
-                <div class="col-lg-3 col-md-6">
-                  <h4 class="font-heading h4 text-on-dark mb-4">Contact information</h4>
-                  <ul class="footer-contact-list d-flex flex-column gap-3 p-0 m-0 text-on-dark-muted small">
-                    <li class="d-flex gap-3"><i class="fa-solid fa-location-dot text-brand mt-1" aria-hidden="true"></i>
-                      Main Commercial Zone, City Center</li>
-                    <li class="d-flex gap-3"><i class="fa-solid fa-envelope text-brand mt-1" aria-hidden="true"></i>
-                      info@aparajitaengicon.com</li>
-                    <li class="d-flex gap-3"><i class="fa-solid fa-headset text-brand mt-1" aria-hidden="true"></i> +91
-                      00000 00000</li>
-                    <li class="d-flex gap-3"><i class="fa-solid fa-fax text-brand mt-1" aria-hidden="true"></i> +91
-                      00000 00001</li>
-                  </ul>
-                </div>
-
-                <!-- Col 4: Newsletter -->
-                <div class="col-lg-3 col-md-6">
-                  <h4 class="font-heading h4 text-on-dark mb-4">Our newsletter</h4>
-                  <p class="text-on-dark-muted small mb-4">Sign up to our newsletter to get the latest news and offers.
-                  </p>
-                  <form class="newsletter-form position-relative">
-                    <div class="input-group bg-ink rounded-pill p-1 border border-secondary">
-                      <input type="email" class="form-control bg-transparent border-0 text-on-dark ps-3"
-                        placeholder="Your email address" aria-label="Your email address" required>
-                      <button class="btn btn-warning rounded-pill px-4 font-body font-weight-500 text-dark"
-                        type="submit">Subscribe</button>
-                    </div>
-                    <div class="form-alert small mt-2" style="display: none;" role="alert"></div>
-                  </form>
-                </div>
+            <!-- Row 2: 4 Columns -->
+            <div class="row g-5 py-5 border-bottom border-secondary">
+              <!-- Col 1: About -->
+              <div class="col-lg-3 col-md-6">
+                <h4 class="font-heading h4 text-on-dark mb-4">About Aparajita Engicon</h4>
+                <p class="text-on-dark-muted small">
+                  Aparajita Engicon Pvt Ltd is a dependable engineering and general contracting company delivering
+                  commercial construction, residential building, renovations, and site management with safety and
+                  precision.
+                </p>
               </div>
 
-              <!-- Bottom Bar -->
-              <div
-                class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 py-4 text-on-dark-muted small">
-                <div class="d-flex gap-4 align-items-center">
-                  <a href="#" class="text-on-dark-muted text-decoration-none">Privacy policy</a>
-                  <a href="#" class="text-on-dark-muted text-decoration-none">Cookie policy</a>
-                  <button type="button" class="btn-motion-toggle text-on-dark-muted border-0 bg-transparent p-0 small"
-                    data-motion-toggle aria-pressed="false" aria-label="Pause site animations">Pause animations</button>
-                </div>
-                <div>
-                  Copyright &copy; <span data-year>2026</span> Aparajita Engicon Pvt Ltd. All rights reserved.
-                </div>
-                <div class="d-flex gap-3">
-                  <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
-                      aria-hidden="true"></i></a>
-                  <a href="#" class="social-icon" aria-label="Twitter X"><i class="fa-brands fa-x-twitter"
-                      aria-hidden="true"></i></a>
-                  <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"
-                      aria-hidden="true"></i></a>
-                  <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"
-                      aria-hidden="true"></i></a>
-                </div>
+              <!-- Col 2: Useful Links -->
+              <div class="col-lg-3 col-md-6">
+                <h4 class="font-heading h4 text-on-dark mb-4">Useful links</h4>
+                <ul class="footer-links d-flex flex-column gap-2 p-0 m-0">
+                  <li><a href="#home" class="text-on-dark-muted small">Home</a></li>
+                  <li><a href="#who-we-are" class="text-on-dark-muted small">Who We Are</a></li>
+                  <li><a href="#about" class="text-on-dark-muted small">About Us</a></li>
+                  <li><a href="#services" class="text-on-dark-muted small">Services</a></li>
+                  <li><a href="#team" class="text-on-dark-muted small">Team</a></li>
+                  <li><a href="#news" class="text-on-dark-muted small">News</a></li>
+                  <li><a href="#contact" class="text-on-dark-muted small">Contact us</a></li>
+                </ul>
+              </div>
+
+              <!-- Col 3: Contact Info -->
+              <div class="col-lg-3 col-md-6">
+                <h4 class="font-heading h4 text-on-dark mb-4">Contact information</h4>
+                <ul class="footer-contact-list d-flex flex-column gap-3 p-0 m-0 text-on-dark-muted small">
+                  <li class="d-flex gap-3"><i class="fa-solid fa-location-dot text-brand mt-1" aria-hidden="true"></i>
+                    Main Commercial Zone, City Center</li>
+                  <li class="d-flex gap-3"><i class="fa-solid fa-envelope text-brand mt-1" aria-hidden="true"></i>
+                    info@aparajitaengicon.com</li>
+                  <li class="d-flex gap-3"><i class="fa-solid fa-headset text-brand mt-1" aria-hidden="true"></i> +91
+                    00000 00000</li>
+                  <li class="d-flex gap-3"><i class="fa-solid fa-fax text-brand mt-1" aria-hidden="true"></i> +91
+                    00000 00001</li>
+                </ul>
+              </div>
+
+              <!-- Col 4: Newsletter -->
+              <div class="col-lg-3 col-md-6">
+                <h4 class="font-heading h4 text-on-dark mb-4">Our newsletter</h4>
+                <p class="text-on-dark-muted small mb-4">Sign up to our newsletter to get the latest news and offers.
+                </p>
+                <form class="newsletter-form position-relative">
+                  <div class="input-group bg-ink rounded-pill p-1 border border-secondary">
+                    <input type="email" class="form-control bg-transparent border-0 text-on-dark ps-3"
+                      placeholder="Your email address" aria-label="Your email address" required>
+                    <button class="btn btn-warning rounded-pill px-4 font-body font-weight-500 text-dark"
+                      type="submit">Subscribe</button>
+                  </div>
+                  <div class="form-alert small mt-2" style="display: none;" role="alert"></div>
+                </form>
               </div>
             </div>
-          </footer>
 
-          <!-- Floating Back-to-Top Button -->
-          <button type="button" class="back-to-top" aria-label="Back to top">
-            <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-          </button>
+            <!-- Bottom Bar -->
+            <div
+              class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 py-4 text-on-dark-muted small">
+              <div class="d-flex gap-4 align-items-center">
+                <a href="#" class="text-on-dark-muted text-decoration-none">Privacy policy</a>
+                <a href="#" class="text-on-dark-muted text-decoration-none">Cookie policy</a>
+                <button type="button" class="btn-motion-toggle text-on-dark-muted border-0 bg-transparent p-0 small"
+                  data-motion-toggle aria-pressed="false" aria-label="Pause site animations">Pause animations</button>
+              </div>
+              <div>
+                Copyright &copy; <span data-year>2026</span> Aparajita Engicon Pvt Ltd. All rights reserved.
+              </div>
+              <div class="d-flex gap-3">
+                <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"
+                    aria-hidden="true"></i></a>
+                <a href="#" class="social-icon" aria-label="Twitter X"><i class="fa-brands fa-x-twitter"
+                    aria-hidden="true"></i></a>
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"
+                    aria-hidden="true"></i></a>
+                <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"
+                    aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        <!-- Floating Back-to-Top Button -->
+        <button type="button" class="back-to-top" aria-label="Back to top">
+          <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+        </button>
 
       </main>
     </div>
@@ -1718,7 +1701,9 @@
 
   <!-- Application Logic Scripts -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/project-showcase.js"></script>
   <script src="assets/js/animations.js"></script>
+  <script src="assets/js/welcome-strength.js"></script>
 </body>
 
 </html>

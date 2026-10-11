@@ -11,6 +11,9 @@
   // Register GSAP Plugins
   if (typeof ScrollTrigger !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "auto";
+    }
   }
 
   /**
@@ -958,6 +961,225 @@
   }
   /* 7B END */
 
+  /* APJ PROJECTS START */
+  /**
+   * Section 6B: Signature Projects - Stacked Card Gallery (#apj-projects)
+   * Pattern based on CodePen reference: atifsheraz/WbNGOBR
+   */
+  function initApjProjects() {
+    var root = document.querySelector("#apj-projects");
+    if (!root || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+    try {
+      var items = gsap.utils.toArray("[data-apj-item]", root);
+      var cards = items.map(function (item) { return item.querySelector("[data-apj-card]"); });
+      var shades = items.map(function (item) { return item.querySelector("[data-apj-shade]"); });
+      var images = items.map(function (item) { return item.querySelector("[data-apj-img]"); });
+      var last = items.length - 1;
+      var STICK = 96;
+      var SCALE_STEP = 0.05;
+      var pins = [];
+
+      // 1. Pre-split title lines up front before creating any ScrollTriggers
+      var head = root.querySelector(".apj-projects__head");
+      if (head) {
+        var headTitle = head.querySelector('[data-apj-anim="title"]');
+        if (headTitle && !headTitle.querySelector(".apj-line")) {
+          headTitle.innerHTML = '<span class="apj-line-wrap" style="display:block;overflow:hidden;"><span class="apj-line" style="display:block;">' + headTitle.innerHTML + '</span></span>';
+        }
+      }
+
+      items.forEach(function (item) {
+        var cardTitle = item.querySelector("[data-apj-title]");
+        if (cardTitle && !cardTitle.querySelector(".apj-line")) {
+          cardTitle.innerHTML = '<span class="apj-line-wrap" style="display:block;overflow:hidden;"><span class="apj-line" style="display:block;">' + cardTitle.innerHTML + '</span></span>';
+        }
+      });
+
+      ScrollTrigger.create({
+        trigger: root,
+        start: "top bottom",
+        end: "bottom top",
+        toggleClass: { targets: root, className: "apj-projects--active" },
+      });
+
+      var mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          deck: "(min-width: 992px) and (prefers-reduced-motion: no-preference)",
+          flow: "(max-width: 991px) and (prefers-reduced-motion: no-preference)",
+        },
+        function (context) {
+          var deck = context.conditions.deck;
+          var flow = context.conditions.flow;
+
+          if (deck) {
+            // Set explicit z-index and 3D transform origin on cards
+            items.forEach(function (item, i) {
+              gsap.set(item, { zIndex: 10 + i });
+            });
+            gsap.set(cards, { transformOrigin: "50% 0%", force3D: true });
+
+            // 2. Pinning Each Card at STICK px (atifsheraz/WbNGOBR pattern)
+            items.forEach(function (item, i) {
+              if (i === last) return;
+              pins[i] = ScrollTrigger.create({
+                trigger: item,
+                start: "top " + STICK + "px",
+                endTrigger: items[last],
+                end: "top " + STICK + "px",
+                pin: item,
+                pinSpacing: false,
+                invalidateOnRefresh: true,
+              });
+            });
+
+            // 3. Scrubbed scale-down & dimming cover effect (atifsheraz/WbNGOBR pattern)
+            for (var j = 0; j < last; j++) {
+              var nextItem = items[j + 1];
+              gsap.to(cards[j], {
+                scale: 0.94,
+                ease: "none",
+                immediateRender: false,
+                scrollTrigger: {
+                  trigger: nextItem,
+                  start: "top bottom",
+                  end: "top " + STICK + "px",
+                  scrub: true,
+                },
+              });
+              gsap.to(shades[j], {
+                opacity: 0.35,
+                ease: "none",
+                immediateRender: false,
+                scrollTrigger: {
+                  trigger: nextItem,
+                  start: "top bottom",
+                  end: "top " + STICK + "px",
+                  scrub: true,
+                },
+              });
+            }
+
+            // 4. Image Parallax & Focus Safety
+            items.forEach(function (item, i) {
+              if (images[i]) {
+                gsap.fromTo(images[i], { yPercent: 6 }, {
+                  yPercent: -6,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: item,
+                    start: "top bottom",
+                    end: "top " + STICK + "px",
+                    scrub: true,
+                  },
+                });
+              }
+
+              item.addEventListener("focusin", function () {
+                var pin = pins[i];
+                if (!pin || !pin.isActive) return;
+                var smoother = typeof ScrollSmoother !== "undefined" ? ScrollSmoother.get() : null;
+                if (smoother) smoother.scrollTo(pin.start, false);
+                else window.scrollTo(0, pin.start);
+              });
+            });
+          }
+
+          if (flow) {
+            items.forEach(function (item, i) {
+              if (images[i]) {
+                gsap.fromTo(images[i], { yPercent: -6 }, {
+                  yPercent: 6,
+                  ease: "none",
+                  scrollTrigger: { trigger: item, start: "top bottom", end: "bottom top", scrub: true },
+                });
+              }
+            });
+          }
+
+          // 5. Heading reveals with immediate initial state
+          if (head) {
+            var eyebrow = head.querySelector('[data-apj-anim="eyebrow"]');
+            var title = head.querySelector('[data-apj-anim="title"]');
+            var intro = head.querySelector('[data-apj-anim="text"]');
+            var rule = head.querySelector('[data-apj-anim="rule"]');
+
+            var headIcon = eyebrow ? eyebrow.querySelector("i") : null;
+            var headTitleLine = title ? title.querySelector(".apj-line") : null;
+
+            var headRect = head.getBoundingClientRect();
+            var headAlreadyInView = headRect.top < window.innerHeight * 0.9;
+
+            if (!headAlreadyInView) {
+              if (headIcon) gsap.set(headIcon, { scale: 0, rotate: -90 });
+              if (eyebrow) gsap.set(eyebrow, { x: -14, opacity: 0 });
+              if (headTitleLine) gsap.set(headTitleLine, { yPercent: 110 });
+              else if (title) gsap.set(title, { y: 30, opacity: 0 });
+              if (intro) gsap.set(intro, { y: 30, opacity: 0 });
+              if (rule) gsap.set(rule, { scaleX: 0 });
+
+              var headTl = gsap.timeline({
+                scrollTrigger: { trigger: head, start: "top 85%", once: true }
+              });
+
+              if (headIcon) headTl.to(headIcon, { scale: 1, rotate: 0, duration: 0.6, ease: "back.out(2)" }, 0);
+              if (eyebrow) headTl.to(eyebrow, { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }, 0);
+              if (headTitleLine) headTl.to(headTitleLine, { yPercent: 0, duration: 1.1, ease: "power4.out" }, 0.1);
+              else if (title) headTl.to(title, { y: 0, opacity: 1, duration: 1.1, ease: "power4.out" }, 0.1);
+              if (intro) headTl.to(intro, { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }, 0.3);
+              if (rule) headTl.to(rule, { scaleX: 1, duration: 1.2, ease: "power3.inOut" }, 0.5);
+            }
+          }
+
+          // 6. Per-card content reveals with immediate initial state
+          items.forEach(function (item, i) {
+            var cardImg = images[i];
+            var chips = item.querySelectorAll(".apj-chip");
+            var count = item.querySelector("[data-apj-count]");
+            var cardTitle = item.querySelector("[data-apj-title]");
+            var cta = item.querySelector("[data-apj-cta]");
+            var arrow = cta ? cta.querySelector(".apj-pcard__cta-arrow") : null;
+            var cardTitleLine = cardTitle ? cardTitle.querySelector(".apj-line") : null;
+
+            var rect = item.getBoundingClientRect();
+            var isAlreadyInOrPastView = rect.top < window.innerHeight * 0.9;
+
+            if (!isAlreadyInOrPastView) {
+              if (cardImg) gsap.set(cardImg, { scale: 1.15 });
+              if (chips.length) gsap.set(chips, { y: 20, scale: 0.9, opacity: 0 });
+              if (count) gsap.set(count, { x: -16, opacity: 0 });
+              if (cardTitleLine) gsap.set(cardTitleLine, { yPercent: 110 });
+              else if (cardTitle) gsap.set(cardTitle, { y: 30, opacity: 0 });
+              if (cta) gsap.set(cta, { x: 48, opacity: 0 });
+              if (arrow) gsap.set(arrow, { scale: 0 });
+
+              var cardTl = gsap.timeline({
+                scrollTrigger: { trigger: item, start: "top 85%", once: true }
+              });
+
+              if (cardImg) cardTl.to(cardImg, { scale: 1, duration: 1.4, ease: "power3.out" }, 0);
+              if (chips.length) cardTl.to(chips, { y: 0, scale: 1, opacity: 1, duration: 0.6, stagger: 0.08, ease: "back.out(1.5)" }, 0.15);
+              if (count) cardTl.to(count, { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 0.25);
+              if (cardTitleLine) cardTl.to(cardTitleLine, { yPercent: 0, duration: 0.9, ease: "power4.out" }, 0.3);
+              else if (cardTitle) cardTl.to(cardTitle, { y: 0, opacity: 1, duration: 0.9, ease: "power4.out" }, 0.3);
+              if (cta) cardTl.to(cta, { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, 0.45);
+              if (arrow) cardTl.to(arrow, { scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.7);
+            }
+          });
+
+          if (typeof ScrollTrigger.sort === "function") {
+            ScrollTrigger.sort();
+          }
+        }
+      );
+    } catch (error) {
+      root.classList.add("apj-projects--static");
+    }
+  }
+  /* APJ PROJECTS END */
+
   // Initialize on DOMContentLoaded
   document.addEventListener("DOMContentLoaded", function () {
     var mm = gsap.matchMedia();
@@ -973,9 +1195,31 @@
       initRibbons();
       initIntroStats();
       initFeaturedServices();
+      initApjProjects();
       initMarquees();
       initDeclarativeReveals();
+
+      if (typeof ScrollTrigger !== "undefined") {
+        if (window.lenis) window.lenis.resize();
+        ScrollTrigger.refresh();
+      }
     });
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      if (window.lenis) window.lenis.resize();
+      if (typeof ScrollTrigger !== "undefined") {
+        ScrollTrigger.refresh();
+      }
+    });
+  }
+
+  window.addEventListener("load", function () {
+    if (window.lenis) window.lenis.resize();
+    if (typeof ScrollTrigger !== "undefined") {
+      ScrollTrigger.refresh();
+    }
   });
 
 })();
