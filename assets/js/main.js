@@ -25,16 +25,16 @@
         header.classList.remove("is-scrolled");
       }
 
-      // Hide / Show on direction
-      if (currentScrollY > 200 && currentScrollY > lastScrollY) {
-        // Scrolling down
-        if (!document.body.classList.contains("offcanvas-open")) {
-          header.classList.add("is-hidden");
-        }
-      } else {
-        // Scrolling up
-        header.classList.remove("is-hidden");
-      }
+      // // Hide / Show on direction
+      // if (currentScrollY > 200 && currentScrollY > lastScrollY) {
+      //   // Scrolling down
+      //   if (!document.body.classList.contains("offcanvas-open")) {
+      //     header.classList.add("is-hidden");
+      //   }
+      // } else {
+      //   // Scrolling up
+      //   header.classList.remove("is-hidden");
+      // }
 
       lastScrollY = currentScrollY;
     }
@@ -215,7 +215,7 @@
           if (video && video.parentNode) video.parentNode.removeChild(video);
           if (scrim && scrim.parentNode) scrim.parentNode.removeChild(scrim);
           if (toggleBtn && toggleBtn.parentNode) toggleBtn.parentNode.removeChild(toggleBtn);
-        } catch (e) {}
+        } catch (e) { }
       }
 
       // Gate 1: Reduced Motion
@@ -251,7 +251,7 @@
           userPaused = true;
           video._userPaused = true;
         }
-      } catch (e) {}
+      } catch (e) { }
 
       function updateToggleUI(isPaused) {
         if (!toggleBtn) return;
@@ -358,14 +358,14 @@
         toggleBtn.addEventListener("click", function () {
           if (video.paused || video._userPaused) {
             video._userPaused = false;
-            try { sessionStorage.setItem("hero-video-paused", "false"); } catch (e) {}
+            try { sessionStorage.setItem("hero-video-paused", "false"); } catch (e) { }
             video.play().then(function () {
               video.classList.add("is-playing");
               updateToggleUI(false);
-            }).catch(function () {});
+            }).catch(function () { });
           } else {
             video._userPaused = true;
-            try { sessionStorage.setItem("hero-video-paused", "true"); } catch (e) {}
+            try { sessionStorage.setItem("hero-video-paused", "true"); } catch (e) { }
             video.pause();
             updateToggleUI(true);
           }
@@ -385,7 +385,7 @@
                 }
               } else {
                 if (video._obsPaused && !video._userPaused) {
-                  video.play().catch(function () {});
+                  video.play().catch(function () { });
                   video._obsPaused = false;
                 }
               }
@@ -404,7 +404,7 @@
           }
         } else {
           if (video._tabPaused && !video._userPaused) {
-            video.play().catch(function () {});
+            video.play().catch(function () { });
             video._tabPaused = false;
           }
         }
